@@ -1,0 +1,37 @@
+App winform C# .Net
+
+* Database
+QUANLYBANHANG:
+	- Tìm kiếm (mã sản phẩm và số điện thoại khách hàng)
+	- Không có thêm, sửa, xóa
+QUANLYSANPHAM:
+	- Thêm, Sửa, Xóa (value Kho = 0), Tìm Kiếm (Khóa Chính)
+QUANLYDONHANG:
+	- Tìm Kiếm (Khóa Chính)
+	- Không có thêm, sửa, xóa
+QUANLYKHOHANG, QUANLYKHACHHANG:
+	- Thêm, Sửa, Xóa, Tìm Kiếm (Khóa Chính)
+NGUOIDUNG
+	- Không có thêm, sửa, xóa
+	- Chỉ truy vấn đề login
+
+* Form:
+FormLogin:
+	- Login dựa vào data từ table NGUOIDUNG
+FormBanHang:
+	- Tìm kiếm số điện thoại khách
+	- Đổ data từ QUANLYKHACHHANG ra gridviewKhach
+	- Tìm kiếm mã sản phẩm
+	- Đổ data từ QUANLYSANPHAM ra gridviewSanPham
+	- Tính tổng tiền từ gridviewSanPham
+	- Sau khi tính tổng tiền, thiết lập mã đơn hàng tự động để lưu vào QUANLYBANHANG và QUANLYDONHANG
+	- Sau khi bán hàng tự động giảm theo số lượng hàng bán ra
+FormNhapHang
+	- Chức năng thêm, sửa, xóa cho QUANLYSANPHAM
+FormTimKiemDonhang
+	- Chức năng tìm kiếm cho QUANLYDONHANG
+FormQuanLyKhoHang
+	- Chức năng thêm, sửa, xóa, tìm kiếm cho QUANLYKHOHANG
+	- Phần ô nhập kho sẽ tự động được cộng vào QUANLYSANPHAM
+FormQuanLyKhachHang
+	- Chức năng thêm, sửa, xóa cho QUANLYKHACHHANG
