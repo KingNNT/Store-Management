@@ -20,6 +20,5 @@ Coded by [KingNNT](https://www.facebook.com/Kinggg.NNT)
 ---
 ### Nội dung:
 - Xây dựng app window form ~ 1.000.000 VND
-
 ---
 ***Thành Tiền: 1.000.000 VND***
