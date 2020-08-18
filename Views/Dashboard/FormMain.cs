@@ -10,7 +10,7 @@ namespace StoreManagement.Views
         {
             InitializeComponent();
         }
-
+        #region function loadForms
         private void loadFormBanHang()
         {
             FormBanHang frmBanHang = new FormBanHang() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
@@ -60,6 +60,7 @@ namespace StoreManagement.Views
             this.resetBackgroundColorOfMenu();
             menuItemQuanLyKhachHang.BackColor = Color.Gray;
         }
+        #endregion function loadForms
 
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -93,11 +94,10 @@ namespace StoreManagement.Views
 
         private void resetBackgroundColorOfMenu()
         {
-            menuItemBanHang.BackColor = Color.White;
-            menuItemNhapHang.BackColor = Color.White;
-            menuItemQuanLyKhoHang.BackColor = Color.White;
-            menuItemTimKiemDonHang.BackColor = Color.White;
-            menuItemQuanLyKhachHang.BackColor = Color.White;
+            foreach (ToolStripMenuItem item in menuStrip.Items)
+            {
+                item.BackColor = Color.White;
+            }
         }
     }
 }
