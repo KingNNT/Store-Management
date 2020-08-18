@@ -1,4 +1,4 @@
-﻿namespace KH039.views
+﻿namespace StoreManagement.views
 {
     partial class FormQuanLyKhoHang
     {

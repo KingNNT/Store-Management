@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using KH039.views;
+using StoreManagement.views;
 
-namespace KH039
+namespace StoreManagement
 {
     static class Program
     {

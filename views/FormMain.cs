@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using KH039.views;
+using StoreManagement.views;
 
-namespace KH039.views
+namespace StoreManagement.views
 {
     public partial class FormMain : Form
     {

@@ -7,11 +7,11 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
 
-namespace KH039.models
+namespace StoreManagement.models
 {
     class Database
     {
-        private string str_conn = @"Data Source=localhost;Initial Catalog=KH039-LTKK;Integrated Security=True";
+        private string str_conn = @"Data Source=localhost;Initial Catalog=StoreManagement-LTKK;Integrated Security=True";
 
 
         public bool login(string txtUsr, string txtPwd)
@@ -20,7 +20,7 @@ namespace KH039.models
             {
                 SqlConnection conn = new SqlConnection(str_conn);
                 conn.Open();
-                string query = @"SELECT* FROM [KH039-LTKK].[dbo].[NGUOIDUNG] WHERE TaiKhoan = @usr AND MatKhau = @pwd";
+                string query = @"SELECT* FROM [StoreManagement-LTKK].[dbo].[NGUOIDUNG] WHERE TaiKhoan = @usr AND MatKhau = @pwd";
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.Add(new SqlParameter("usr", txtUsr));
                 command.Parameters.Add(new SqlParameter("pwd", txtPwd));
@@ -130,7 +130,7 @@ namespace KH039.models
             {
                 SqlConnection conn = new SqlConnection(str_conn);
                 conn.Open();
-                string query = @"INSERT INTO [KH039-LTKK].[dbo].[QUANLYBANHANG] (MaDH, MaSP, TenSP, SDTKH) VALUES ('" + MaDH + "', '" + MaSP + "', '" + TenSP + "', '" + SDTKH + "')";
+                string query = @"INSERT INTO [StoreManagement-LTKK].[dbo].[QUANLYBANHANG] (MaDH, MaSP, TenSP, SDTKH) VALUES ('" + MaDH + "', '" + MaSP + "', '" + TenSP + "', '" + SDTKH + "')";
                 SqlCommand command = new SqlCommand(query, conn);
                 command.ExecuteNonQuery();
                 conn.Close();
@@ -148,7 +148,7 @@ namespace KH039.models
             {
                 SqlConnection conn = new SqlConnection(str_conn);
                 conn.Open();
-                string query = @"INSERT INTO [KH039-LTKK].[dbo].[QUANLYDONHANG] (MaDH, NgayTaoDon, TenKH, TrangThaiDonHang, KhachPhaiTra) VALUES ('" + MaDH + "', '" + NgayTaoDon.Date.ToString("yyyy-MM-dd") + "', '" + TenKH + "', '" + TrangThaiDH + "', " + KhachHangPhaiTra + ")";
+                string query = @"INSERT INTO [StoreManagement-LTKK].[dbo].[QUANLYDONHANG] (MaDH, NgayTaoDon, TenKH, TrangThaiDonHang, KhachPhaiTra) VALUES ('" + MaDH + "', '" + NgayTaoDon.Date.ToString("yyyy-MM-dd") + "', '" + TenKH + "', '" + TrangThaiDH + "', " + KhachHangPhaiTra + ")";
                 SqlCommand command = new SqlCommand(query, conn);
                 command.ExecuteNonQuery();
                 conn.Close();
@@ -187,7 +187,7 @@ namespace KH039.models
             {
                 SqlConnection conn = new SqlConnection(str_conn);
                 conn.Open();
-                string query = @"SELECT [Kho] FROM [KH039-LTKK].[dbo].[QUANLYSANPHAM] WHERE TenSP = '" + TenSP + "'";
+                string query = @"SELECT [Kho] FROM [StoreManagement-LTKK].[dbo].[QUANLYSANPHAM] WHERE TenSP = '" + TenSP + "'";
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataReader data = command.ExecuteReader();
                 //conn.Close();
@@ -213,7 +213,7 @@ namespace KH039.models
             {
                 SqlConnection conn = new SqlConnection(str_conn);
                 conn.Open();
-                string query = @"SELECT [Kho] FROM [KH039-LTKK].[dbo].[QUANLYSANPHAM] WHERE MaSP = '" + MaSP + "'";
+                string query = @"SELECT [Kho] FROM [StoreManagement-LTKK].[dbo].[QUANLYSANPHAM] WHERE MaSP = '" + MaSP + "'";
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataReader data = command.ExecuteReader();
                 //conn.Close();
@@ -238,7 +238,7 @@ namespace KH039.models
             {
                 SqlConnection conn = new SqlConnection(str_conn);
                 conn.Open();
-                string query = @"SELECT TOP 1 MaDH FROM [KH039-LTKK].[dbo].[QUANLYBANHANG] ORDER BY MaDH DESC";
+                string query = @"SELECT TOP 1 MaDH FROM [StoreManagement-LTKK].[dbo].[QUANLYBANHANG] ORDER BY MaDH DESC";
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataReader data = command.ExecuteReader();
                 if (data.Read() == true)
@@ -259,7 +259,7 @@ namespace KH039.models
         {
             SqlConnection conn = new SqlConnection(str_conn);
             conn.Open();
-            string query = @"INSERT INTO [KH039-LTKK].[dbo].[QUANLYSANPHAM] (TenSP, MaSP, DanhMucSP, Kho, GiaNhap, GiaBanLe, Visible) VALUES ('" + TenSP + "', '" + MaSP + "', '" + DanhMucSP + "', " + Kho + ", " + GiaNhap + ", " + GiaBan + ", " + Visiable + ")";
+            string query = @"INSERT INTO [StoreManagement-LTKK].[dbo].[QUANLYSANPHAM] (TenSP, MaSP, DanhMucSP, Kho, GiaNhap, GiaBanLe, Visible) VALUES ('" + TenSP + "', '" + MaSP + "', '" + DanhMucSP + "', " + Kho + ", " + GiaNhap + ", " + GiaBan + ", " + Visiable + ")";
             SqlCommand command = new SqlCommand(query, conn);
             command.ExecuteNonQuery();
             conn.Close();
@@ -269,7 +269,7 @@ namespace KH039.models
         {
             SqlConnection conn = new SqlConnection(str_conn);
             conn.Open();
-            string query = @"SELECT * FROM [KH039-LTKK].[dbo].[QUANLYSANPHAM] WHERE MaSP = '" + MaSP + "'";
+            string query = @"SELECT * FROM [StoreManagement-LTKK].[dbo].[QUANLYSANPHAM] WHERE MaSP = '" + MaSP + "'";
             SqlCommand command = new SqlCommand(query, conn);
             SqlDataReader data = command.ExecuteReader();
             //conn.Close();
@@ -289,7 +289,7 @@ namespace KH039.models
         {
             SqlConnection conn = new SqlConnection(str_conn);
             conn.Open();
-            string query = @"DELETE FROM [KH039-LTKK].[dbo].[QUANLYSANPHAM] WHERE Visible = 0";
+            string query = @"DELETE FROM [StoreManagement-LTKK].[dbo].[QUANLYSANPHAM] WHERE Visible = 0";
             SqlCommand command = new SqlCommand(query, conn);
             command.ExecuteNonQuery();
             conn.Close();

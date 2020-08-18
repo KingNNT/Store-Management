@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using KH039.models;
+using StoreManagement.models;
 
-namespace KH039.views
+namespace StoreManagement.views
 {
     public partial class FormTimKiemDonhang : Form
     {
@@ -17,7 +17,7 @@ namespace KH039.views
         {
             InitializeComponent();
         }
-        private string tableName = @"[KH039-LTKK].[dbo].[QUANLYDONHANG]";
+        private string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYDONHANG]";
         DataSet ds = new DataSet();
         Database db = new Database();
         private void btnFind_Click(object sender, EventArgs e)

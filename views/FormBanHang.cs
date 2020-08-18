@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using KH039.models;
+using StoreManagement.models;
 
-namespace KH039.views
+namespace StoreManagement.views
 {
     public partial class FormBanHang : Form
     {
@@ -28,13 +28,13 @@ namespace KH039.views
         {
             btnTinhTien.Enabled = true;
             //TODO:
-            string tableName = @"[KH039-LTKK].[dbo].[QUANLYSANPHAM]";
+            string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYSANPHAM]";
             this.findSanPham(tableName);
         }
 
         private void btnFindPhoneNumberKhachHang_Click(object sender, EventArgs e)
         {
-            string tableName = @"[KH039-LTKK].[dbo].[QUANLYKHACHHANG]";
+            string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYKHACHHANG]";
             this.findKhachHang(tableName);
         }
 
@@ -83,7 +83,7 @@ namespace KH039.views
         {
             try
             {
-                string tableName = @"[KH039-LTKK].[dbo].[QUANLYSANPHAM]";
+                string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYSANPHAM]";
 
                 for (int i = 0; i < grvSanPham.Rows.Count; i++)
                 {
