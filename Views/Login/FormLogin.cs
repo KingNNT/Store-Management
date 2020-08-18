@@ -55,5 +55,10 @@ namespace StoreManagement.Views
         {
             WindowState = FormWindowState.Normal;
         }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

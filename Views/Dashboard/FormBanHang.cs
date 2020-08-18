@@ -10,27 +10,84 @@ namespace StoreManagement.Views
         public FormBanHang()
         {
             InitializeComponent();
-            this.setDefault();
         }
 
-        private DataSet dsSanPham = new DataSet();
-        private DataSet dsKhachHang = new DataSet();
-        private Database db = new Database();
-
+        #region Event Form
+        private void FormBanHang_Load(object sender, EventArgs e)
+        {
+            this.setDefault();
+            this.addColWhenBuyProducts();
+        }
+        private void btnClearProduct_Click(object sender, EventArgs e)
+        {
+            dsSanPham.Reset();
+            grvSanPham.DataSource = null;
+        }
+        private void btnTinhTien_Click(object sender, EventArgs e)
+        {
+            this.tinhTong();
+            this.showMaHD();
+        }
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            this.thanhToan();
+            this.createBill();
+        }
         private void btnFindSanPham_Click(object sender, EventArgs e)
         {
             btnTinhTien.Enabled = true;
-            //TODO:
             string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYSANPHAM]";
             this.findSanPham(tableName);
         }
-
         private void btnFindPhoneNumberKhachHang_Click(object sender, EventArgs e)
         {
             string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYKHACHHANG]";
             this.findKhachHang(tableName);
         }
+        private void txtKhachDua_TextChanged(object sender, EventArgs e)
+        {
+            if (txtKhachDua.Text == "")
+            {
+                btnThanhToan.Enabled = false;
+            }
+            else
+            {
+                btnThanhToan.Enabled = true;
+            }
+        }
+        private void txtChietKhau_TextChanged(object sender, EventArgs e)
+        {
+            if (txtChietKhau.Text == "")
+            {
+                txtChietKhau.Text = "0";
+            }
+            int chietKhau = Convert.ToInt32(txtChietKhau.Text);
+            int khachPhaiTra = Convert.ToInt32(txtTongTien.Text) - chietKhau;
+            txtKhachPhaiTra.Text = khachPhaiTra.ToString();
+        }
+        #endregion Event Form
 
+        #region
+        private void setDefault()
+        {
+            btnTinhTien.Enabled = false;
+            btnThanhToan.Enabled = false;
+        }
+        private void findSanPham(string tableName)
+        {
+            //string field = "MaSP";
+            //string value = txtFindTenSanPham.Text;
+            //db.findDataSanPham(dsSanPham, tableName, field, value);
+            ////grvSanPham.DataSource = null;
+            //grvSanPham.DataSource = dsSanPham.Tables[tableName].DefaultView;
+
+            string findIDProduct = txtFindTenSanPham.Text;
+            using (StoreManagement ef = new StoreManagement())
+            {
+                //TODO: Lam Tiep Di
+            }
+
+        }
         private void findKhachHang(string tableName)
         {
             string field = "SDTKH";
@@ -39,40 +96,6 @@ namespace StoreManagement.Views
             grvKhachHang.DataSource = null;
             grvKhachHang.DataSource = dsKhachHang.Tables[tableName].DefaultView;
         }
-
-        private void findSanPham(string tableName)
-        {
-            string field = "MaSP";
-            string value = txtFindTenSanPham.Text;
-            db.findDataSanPham(dsSanPham, tableName, field, value);
-            //grvSanPham.DataSource = null;
-            grvSanPham.DataSource = dsSanPham.Tables[tableName].DefaultView;
-        }
-
-        private void btnClearProduct_Click(object sender, EventArgs e)
-        {
-            dsSanPham.Reset();
-            grvSanPham.DataSource = null;
-        }
-
-        private void setDefault()
-        {
-            btnTinhTien.Enabled = false;
-            btnThanhToan.Enabled = false;
-        }
-
-        private void btnTinhTien_Click(object sender, EventArgs e)
-        {
-            this.tinhTong();
-            this.showMaHD();
-        }
-
-        private void btnThanhToan_Click(object sender, EventArgs e)
-        {
-            this.thanhToan();
-            this.createBill();
-        }
-
         private void tinhTong()
         {
             try
@@ -113,34 +136,14 @@ namespace StoreManagement.Views
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void thanhToan()
         {
             txtTienTraLai.Text = (Convert.ToDouble(txtKhachDua.Text) - Convert.ToDouble(txtKhachPhaiTra.Text)).ToString();
         }
-
-        private void txtKhachDua_TextChanged(object sender, EventArgs e)
-        {
-            if (txtKhachDua.Text == "")
-            {
-                btnThanhToan.Enabled = false;
-            }
-            else
-            {
-                btnThanhToan.Enabled = true;
-            }
-        }
-
-        private void FormBanHang_Load(object sender, EventArgs e)
-        {
-            this.addColWhenBuyProducts();
-        }
-
         private void showMaHD()
         {
             txtSoHoaDon.Text = this.createMaHD(db.getLastRecord());
         }
-
         private string createMaHD(string maHD)
         {
             string result = "";
@@ -149,7 +152,6 @@ namespace StoreManagement.Views
             int value = Convert.ToInt32(part2) + 1;
             return part1 + value.ToString("D3");
         }
-
         private void createBill()
         {
             string TenSP = grvSanPham.Rows[0].Cells[2].Value.ToString();
@@ -193,22 +195,11 @@ namespace StoreManagement.Views
 
             MessageBox.Show("Create Bill Successfully", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void addColWhenBuyProducts()
         {
             grvSanPham.Columns.Add("SoLuong", "SoLuong");
             grvSanPham.Columns.Add("ThanhTien", "ThanhTien");
         }
-
-        private void txtChietKhau_TextChanged(object sender, EventArgs e)
-        {
-            if (txtChietKhau.Text == "")
-            {
-                txtChietKhau.Text = "0";
-            }
-            int chietKhau = Convert.ToInt32(txtChietKhau.Text);
-            int khachPhaiTra = Convert.ToInt32(txtTongTien.Text) - chietKhau;
-            txtKhachPhaiTra.Text = khachPhaiTra.ToString();
-        }
+        #endregion
     }
 }
