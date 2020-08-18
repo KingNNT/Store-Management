@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.Data;
 
 namespace StoreManagement.models
 {
-    class Database
+    internal class Database
     {
         private string str_conn = @"Data Source=localhost;Initial Catalog=StoreManagement-LTKK;Integrated Security=True";
-
 
         public bool login(string txtUsr, string txtPwd)
         {
@@ -60,6 +55,7 @@ namespace StoreManagement.models
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void getData(DataSet ds, string tableName, string field)
         {
             try
@@ -137,9 +133,7 @@ namespace StoreManagement.models
             }
             catch (Exception ex)
             {
-
             }
-
         }
 
         public void insertDataToTableQuanLyDonHang(string MaDH, DateTime NgayTaoDon, string TenKH, string TrangThaiDH, int KhachHangPhaiTra)
@@ -155,9 +149,7 @@ namespace StoreManagement.models
             }
             catch (Exception ex)
             {
-
             }
-
         }
 
         public void updateDataQuanLySanPham(int value, string TenSP)
@@ -199,12 +191,10 @@ namespace StoreManagement.models
             }
             catch (Exception ex)
             {
-
             }
 
             return strData;
         }
-
 
         public int getSoLuongTonQuanLySanPhamWithMaSP(string MaSP)
         {
@@ -225,7 +215,6 @@ namespace StoreManagement.models
             }
             catch (Exception ex)
             {
-
             }
 
             return strData;
@@ -249,13 +238,12 @@ namespace StoreManagement.models
             }
             catch (Exception ex)
             {
-
             }
 
             return strData;
         }
 
-        public void insertDataTableQUANLYSANPHAM (string TenSP, string MaSP, string DanhMucSP, int Kho, int GiaNhap, int GiaBan, int Visiable)
+        public void insertDataTableQUANLYSANPHAM(string TenSP, string MaSP, string DanhMucSP, int Kho, int GiaNhap, int GiaBan, int Visiable)
         {
             SqlConnection conn = new SqlConnection(str_conn);
             conn.Open();
@@ -265,7 +253,7 @@ namespace StoreManagement.models
             conn.Close();
         }
 
-        public bool checkMaSPQUANLYSANPHAM (string MaSP)
+        public bool checkMaSPQUANLYSANPHAM(string MaSP)
         {
             SqlConnection conn = new SqlConnection(str_conn);
             conn.Open();
@@ -285,7 +273,7 @@ namespace StoreManagement.models
             }
         }
 
-        public void deleteDataTableQUANLYSANPHAM ()
+        public void deleteDataTableQUANLYSANPHAM()
         {
             SqlConnection conn = new SqlConnection(str_conn);
             conn.Open();

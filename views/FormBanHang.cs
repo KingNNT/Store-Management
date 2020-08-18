@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using StoreManagement.models;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using StoreManagement.models;
 
 namespace StoreManagement.views
 {
@@ -19,10 +13,9 @@ namespace StoreManagement.views
             this.setDefault();
         }
 
-
-        DataSet dsSanPham = new DataSet();
-        DataSet dsKhachHang = new DataSet();
-        Database db = new Database();
+        private DataSet dsSanPham = new DataSet();
+        private DataSet dsKhachHang = new DataSet();
+        private Database db = new Database();
 
         private void btnFindSanPham_Click(object sender, EventArgs e)
         {
@@ -61,7 +54,8 @@ namespace StoreManagement.views
             dsSanPham.Reset();
             grvSanPham.DataSource = null;
         }
-        private void setDefault ()
+
+        private void setDefault()
         {
             btnTinhTien.Enabled = false;
             btnThanhToan.Enabled = false;
@@ -98,7 +92,7 @@ namespace StoreManagement.views
                         SoLuong = Convert.ToInt32(grvSanPham.Rows[i].Cells[0].Value.ToString());
                     }
                     int GiaBan = Convert.ToInt32(grvSanPham.Rows[i].Cells[5].Value.ToString());
-                    grvSanPham.Rows[i].Cells[1].Value =  SoLuong * GiaBan ;
+                    grvSanPham.Rows[i].Cells[1].Value = SoLuong * GiaBan;
                 }
 
                 //int sum = Convert.ToInt32(dsSanPham.Tables[tableName].Compute("SUM(GiaBanLe)", string.Empty));
@@ -118,15 +112,12 @@ namespace StoreManagement.views
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
-
 
         private void thanhToan()
         {
             txtTienTraLai.Text = (Convert.ToDouble(txtKhachDua.Text) - Convert.ToDouble(txtKhachPhaiTra.Text)).ToString();
         }
-
 
         private void txtKhachDua_TextChanged(object sender, EventArgs e)
         {
@@ -145,12 +136,12 @@ namespace StoreManagement.views
             this.addColWhenBuyProducts();
         }
 
-        private void showMaHD ()
+        private void showMaHD()
         {
             txtSoHoaDon.Text = this.createMaHD(db.getLastRecord());
         }
 
-        private string createMaHD (string maHD)
+        private string createMaHD(string maHD)
         {
             string result = "";
             string part1 = maHD[0].ToString() + maHD[1].ToString() + maHD[2].ToString();
@@ -159,7 +150,7 @@ namespace StoreManagement.views
             return part1 + value.ToString("D3");
         }
 
-        private void createBill ()
+        private void createBill()
         {
             string TenSP = grvSanPham.Rows[0].Cells[2].Value.ToString();
             string MaSP = grvSanPham.Rows[0].Cells[3].Value.ToString();

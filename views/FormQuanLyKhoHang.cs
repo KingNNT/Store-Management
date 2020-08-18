@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using StoreManagement.models;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using StoreManagement.models;
 
 namespace StoreManagement.views
 {
@@ -17,9 +11,11 @@ namespace StoreManagement.views
         {
             InitializeComponent();
         }
+
         private string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYKHOHANG]";
-        DataSet ds = new DataSet();
-        Database db = new Database();
+        private DataSet ds = new DataSet();
+        private Database db = new Database();
+
         private void showData()
         {
             db.getData(ds, tableName);
@@ -33,6 +29,7 @@ namespace StoreManagement.views
             MessageBox.Show("Lưu Thành Công", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.showData();
         }
+
         private void findData()
         {
             string field = "MaSP";

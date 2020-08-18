@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using StoreManagement.views;
 
 namespace StoreManagement.views
 {
@@ -37,6 +30,7 @@ namespace StoreManagement.views
             this.resetBackgroundColorOfMenu();
             menuItemNhapHang.BackColor = Color.Gray;
         }
+
         private void loadFormQuanLyKhoHang()
         {
             FormQuanLyKhoHang frmQuanLyKhoHang = new FormQuanLyKhoHang() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
@@ -46,6 +40,7 @@ namespace StoreManagement.views
             this.resetBackgroundColorOfMenu();
             menuItemQuanLyKhoHang.BackColor = Color.Gray;
         }
+
         private void loadFormTimKiemDonhang()
         {
             FormTimKiemDonhang frmTimKiemDonHang = new FormTimKiemDonhang() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
@@ -55,6 +50,7 @@ namespace StoreManagement.views
             this.resetBackgroundColorOfMenu();
             menuItemTimKiemDonHang.BackColor = Color.Gray;
         }
+
         private void loadFormQuanLyKhachHang()
         {
             FormQuanLyKhachHang frmQuanLyKhachHang = new FormQuanLyKhachHang() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };

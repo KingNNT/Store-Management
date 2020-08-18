@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using StoreManagement.models;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using StoreManagement.models;
 
 namespace StoreManagement.views
 {
@@ -17,9 +11,10 @@ namespace StoreManagement.views
         {
             InitializeComponent();
         }
+
         private string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYSANPHAM]";
-        DataSet ds = new DataSet();
-        Database db = new Database();
+        private DataSet ds = new DataSet();
+        private Database db = new Database();
 
         private void showData()
         {
@@ -35,6 +30,7 @@ namespace StoreManagement.views
             MessageBox.Show("Lưu Thành Công", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.showData();
         }
+
         private void btnShow_Click(object sender, EventArgs e)
         {
             this.showData();
@@ -98,9 +94,7 @@ namespace StoreManagement.views
                 }
                 catch (Exception ex)
                 {
-
                 }
-
             }
             return true;
         }
