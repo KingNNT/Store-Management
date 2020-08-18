@@ -5,12 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="dce3b9094dd64e6d84d5910c981012fa" Name="Diagram1">
-        <EntityTypeShape EntityType="StoreManagementModel.Account" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="StoreManagementModel.ChiTietDonBanHang" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="StoreManagementModel.KhachHang" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="StoreManagementModel.QuanLyBanHang" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="StoreManagementModel.QuanLyKho" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="StoreManagementModel.QuanLyNhapHang" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StoreManagementModel.Account" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StoreManagementModel.ChiTietDonBanHang" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StoreManagementModel.KhachHang" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="StoreManagementModel.Permission" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="StoreManagementModel.QuanLyBanHang" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StoreManagementModel.QuanLyKho" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="StoreManagementModel.QuanLyNhapHang" Width="1.5" PointX="6.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

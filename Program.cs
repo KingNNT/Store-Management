@@ -1,6 +1,6 @@
-﻿using StoreManagement.views;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using StoreManagement.Views;
 
 namespace StoreManagement
 {
@@ -15,7 +15,6 @@ namespace StoreManagement
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormLogin());
-            //Application.Run(new FormMain());
         }
     }
 }

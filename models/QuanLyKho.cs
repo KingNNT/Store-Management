@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StoreManagement.models
+namespace StoreManagement.Models
 {
     using System;
     using System.Collections.Generic;

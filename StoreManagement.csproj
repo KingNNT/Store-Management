@@ -58,119 +58,133 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="models\Account.cs">
+    <Compile Include="Models\Account.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="models\ChiTietDonBanHang.cs">
+    <Compile Include="Models\ChiTietDonBanHang.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="models\Database.cs" />
-    <Compile Include="models\KhachHang.cs">
+    <Compile Include="Models\Permission.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="models\Model.Context.cs">
+    <Compile Include="Models\Securities.cs" />
+    <Compile Include="Models\Database.cs" />
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="models\Model.cs">
+    <Compile Include="Models\Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="models\Model.Designer.cs">
+    <Compile Include="Models\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="models\QuanLyBanHang.cs">
+    <Compile Include="Models\QuanLyBanHang.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="models\QuanLyKho.cs">
+    <Compile Include="Models\QuanLyKho.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="models\QuanLyNhapHang.cs">
+    <Compile Include="Models\QuanLyNhapHang.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="views\FormBanHang.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard\FormBanHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\FormBanHang.Designer.cs">
+    <Compile Include="Views\Dashboard\FormBanHang.Designer.cs">
       <DependentUpon>FormBanHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\FormLogin.cs">
+    <Compile Include="Views\FormControl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\FormLogin.Designer.cs">
+    <Compile Include="Views\FormControl.Designer.cs">
+      <DependentUpon>FormControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Login\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\FormMain.cs">
+    <Compile Include="Views\Dashboard\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\FormMain.Designer.cs">
+    <Compile Include="Views\Dashboard\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\FormNhapHang.cs">
+    <Compile Include="Views\Dashboard\FormNhapHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\FormNhapHang.Designer.cs">
+    <Compile Include="Views\Dashboard\FormNhapHang.Designer.cs">
       <DependentUpon>FormNhapHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\FormQuanLyKhachHang.cs">
+    <Compile Include="Views\Dashboard\FormQuanLyKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\FormQuanLyKhachHang.Designer.cs">
+    <Compile Include="Views\Dashboard\FormQuanLyKhachHang.Designer.cs">
       <DependentUpon>FormQuanLyKhachHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\FormQuanLyKhoHang.cs">
+    <Compile Include="Views\Dashboard\FormQuanLyKhoHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\FormQuanLyKhoHang.Designer.cs">
+    <Compile Include="Views\Dashboard\FormQuanLyKhoHang.Designer.cs">
       <DependentUpon>FormQuanLyKhoHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\FormTimKiemDonhang.cs">
+    <Compile Include="Views\Dashboard\FormTimKiemDonhang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\FormTimKiemDonhang.Designer.cs">
+    <Compile Include="Views\Dashboard\FormTimKiemDonhang.Designer.cs">
       <DependentUpon>FormTimKiemDonhang.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="views\FormBanHang.resx">
+    <EmbeddedResource Include="Views\Dashboard\FormBanHang.resx">
       <DependentUpon>FormBanHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\FormLogin.resx">
+    <EmbeddedResource Include="Views\FormControl.resx">
+      <DependentUpon>FormControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Login\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\FormMain.resx">
+    <EmbeddedResource Include="Views\Dashboard\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\FormNhapHang.resx">
+    <EmbeddedResource Include="Views\Dashboard\FormNhapHang.resx">
       <DependentUpon>FormNhapHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\FormQuanLyKhachHang.resx">
+    <EmbeddedResource Include="Views\Dashboard\FormQuanLyKhachHang.resx">
       <DependentUpon>FormQuanLyKhachHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\FormQuanLyKhoHang.resx">
+    <EmbeddedResource Include="Views\Dashboard\FormQuanLyKhoHang.resx">
       <DependentUpon>FormQuanLyKhoHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\FormTimKiemDonhang.resx">
+    <EmbeddedResource Include="Views\Dashboard\FormTimKiemDonhang.resx">
       <DependentUpon>FormTimKiemDonhang.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="models\Model.edmx">
+    <EntityDeploy Include="Models\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="models\Model.edmx.diagram">
+    <None Include="Models\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -191,16 +205,27 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="models\Model.Context.tt">
+    <None Include="Assets\Logo\icons8_login_64px.png" />
+    <None Include="Assets\Logo\icons8_login_32px.png" />
+    <None Include="Assets\Logo\icons8_login_100px.png" />
+    <None Include="Assets\Images\icons8_login_32px.png" />
+    <None Include="Assets\Images\icons8_login_64px.png" />
+    <None Include="Assets\Images\icons8_login_64px_1.png" />
+    <None Include="Assets\Images\icons8_login_96px.png" />
+    <None Include="Assets\Images\icons8_login_100px.png" />
+    <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="models\Model.tt">
+    <Content Include="Models\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Loading\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

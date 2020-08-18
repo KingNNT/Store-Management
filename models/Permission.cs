@@ -12,12 +12,9 @@ namespace StoreManagement.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class QuanLyNhapHang
+    public partial class Permission
     {
-        public string MaSanPham { get; set; }
-        public Nullable<long> HangDangVe { get; set; }
-        public string TrangThaiNhapHang { get; set; }
-        public Nullable<long> NhapKho { get; set; }
-        public Nullable<long> DonGia { get; set; }
+        public int id { get; set; }
+        public string Name { get; set; }
     }
 }

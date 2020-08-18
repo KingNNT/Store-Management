@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace StoreManagement.models
+namespace StoreManagement.Models
 {
     internal class Database
     {

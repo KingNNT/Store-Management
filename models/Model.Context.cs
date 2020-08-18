@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StoreManagement.models
+namespace StoreManagement.Models
 {
     using System;
     using System.Data.Entity;
@@ -28,6 +28,7 @@ namespace StoreManagement.models
         public virtual DbSet<Account> Account { get; set; }
         public virtual DbSet<ChiTietDonBanHang> ChiTietDonBanHang { get; set; }
         public virtual DbSet<KhachHang> KhachHang { get; set; }
+        public virtual DbSet<Permission> Permission { get; set; }
         public virtual DbSet<QuanLyBanHang> QuanLyBanHang { get; set; }
         public virtual DbSet<QuanLyKho> QuanLyKho { get; set; }
         public virtual DbSet<QuanLyNhapHang> QuanLyNhapHang { get; set; }
