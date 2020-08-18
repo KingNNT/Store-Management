@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StoreManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Username" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ChiTietDonBanHang">
+          <Key>
+            <PropertyRef Name="MaDonHang" />
+          </Key>
+          <Property Name="MaDonHang" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NgayTaoDon" Type="date" />
+          <Property Name="TenKhachHang" Type="nvarchar" MaxLength="20" />
+          <Property Name="TrangThaiDonHang" Type="nvarchar" MaxLength="20" />
+          <Property Name="KhachPhaiTra" Type="bigint" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="MaKhachHang" />
+          </Key>
+          <Property Name="MaKhachHang" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TenKhachHang" Type="nvarchar" MaxLength="20" />
+          <Property Name="NhomKhachHang" Type="nvarchar" MaxLength="20" />
+          <Property Name="SoDienThoaiKhachHang" Type="nvarchar" MaxLength="20" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="20" />
+          <Property Name="TrangThaiKhachHang" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="QuanLyBanHang">
+          <Key>
+            <PropertyRef Name="MaDonHang" />
+          </Key>
+          <Property Name="MaDonHang" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MaSanPham" Type="nvarchar" MaxLength="20" />
+          <Property Name="TenSanPham" Type="nvarchar" MaxLength="20" />
+          <Property Name="SoDienThoaiKhachHang" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="QuanLyKho">
+          <Key>
+            <PropertyRef Name="MaSanPham" />
+          </Key>
+          <Property Name="TenSanPham" Type="nvarchar" MaxLength="20" />
+          <Property Name="MaSanPham" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DanhMucSanPham" Type="nvarchar" MaxLength="20" />
+          <Property Name="SoLuongTonKho" Type="bigint" />
+          <Property Name="GiaNhap" Type="bigint" />
+          <Property Name="GiaBan" Type="bigint" />
+        </EntityType>
+        <EntityType Name="QuanLyNhapHang">
+          <Key>
+            <PropertyRef Name="MaSanPham" />
+          </Key>
+          <Property Name="MaSanPham" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="HangDangVe" Type="bigint" />
+          <Property Name="TrangThaiNhapHang" Type="nvarchar" MaxLength="20" />
+          <Property Name="NhapKho" Type="bigint" />
+          <Property Name="DonGia" Type="bigint" />
+        </EntityType>
+        <EntityContainer Name="StoreManagementModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietDonBanHang" EntityType="Self.ChiTietDonBanHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuanLyBanHang" EntityType="Self.QuanLyBanHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuanLyKho" EntityType="Self.QuanLyKho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuanLyNhapHang" EntityType="Self.QuanLyNhapHang" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StoreManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ChiTietDonBanHang">
+          <Key>
+            <PropertyRef Name="MaDonHang" />
+          </Key>
+          <Property Name="MaDonHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayTaoDon" Type="DateTime" Precision="0" />
+          <Property Name="TenKhachHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThaiDonHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KhachPhaiTra" Type="Int64" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="MaKhachHang" />
+          </Key>
+          <Property Name="MaKhachHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenKhachHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NhomKhachHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SoDienThoaiKhachHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThaiKhachHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QuanLyBanHang">
+          <Key>
+            <PropertyRef Name="MaDonHang" />
+          </Key>
+          <Property Name="MaDonHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaSanPham" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TenSanPham" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SoDienThoaiKhachHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="QuanLyKho">
+          <Key>
+            <PropertyRef Name="MaSanPham" />
+          </Key>
+          <Property Name="TenSanPham" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MaSanPham" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DanhMucSanPham" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuongTonKho" Type="Int64" />
+          <Property Name="GiaNhap" Type="Int64" />
+          <Property Name="GiaBan" Type="Int64" />
+        </EntityType>
+        <EntityType Name="QuanLyNhapHang">
+          <Key>
+            <PropertyRef Name="MaSanPham" />
+          </Key>
+          <Property Name="MaSanPham" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HangDangVe" Type="Int64" />
+          <Property Name="TrangThaiNhapHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NhapKho" Type="Int64" />
+          <Property Name="DonGia" Type="Int64" />
+        </EntityType>
+        <EntityContainer Name="StoreManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="ChiTietDonBanHang" EntityType="Self.ChiTietDonBanHang" />
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" />
+          <EntitySet Name="QuanLyBanHang" EntityType="Self.QuanLyBanHang" />
+          <EntitySet Name="QuanLyKho" EntityType="Self.QuanLyKho" />
+          <EntitySet Name="QuanLyNhapHang" EntityType="Self.QuanLyNhapHang" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StoreManagementModelStoreContainer" CdmEntityContainer="StoreManagementEntities">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="StoreManagementModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietDonBanHang">
+            <EntityTypeMapping TypeName="StoreManagementModel.ChiTietDonBanHang">
+              <MappingFragment StoreEntitySet="ChiTietDonBanHang">
+                <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
+                <ScalarProperty Name="NgayTaoDon" ColumnName="NgayTaoDon" />
+                <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
+                <ScalarProperty Name="TrangThaiDonHang" ColumnName="TrangThaiDonHang" />
+                <ScalarProperty Name="KhachPhaiTra" ColumnName="KhachPhaiTra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHang">
+            <EntityTypeMapping TypeName="StoreManagementModel.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
+                <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
+                <ScalarProperty Name="NhomKhachHang" ColumnName="NhomKhachHang" />
+                <ScalarProperty Name="SoDienThoaiKhachHang" ColumnName="SoDienThoaiKhachHang" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="TrangThaiKhachHang" ColumnName="TrangThaiKhachHang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuanLyBanHang">
+            <EntityTypeMapping TypeName="StoreManagementModel.QuanLyBanHang">
+              <MappingFragment StoreEntitySet="QuanLyBanHang">
+                <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
+                <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+                <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
+                <ScalarProperty Name="SoDienThoaiKhachHang" ColumnName="SoDienThoaiKhachHang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuanLyKho">
+            <EntityTypeMapping TypeName="StoreManagementModel.QuanLyKho">
+              <MappingFragment StoreEntitySet="QuanLyKho">
+                <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
+                <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+                <ScalarProperty Name="DanhMucSanPham" ColumnName="DanhMucSanPham" />
+                <ScalarProperty Name="SoLuongTonKho" ColumnName="SoLuongTonKho" />
+                <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+                <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuanLyNhapHang">
+            <EntityTypeMapping TypeName="StoreManagementModel.QuanLyNhapHang">
+              <MappingFragment StoreEntitySet="QuanLyNhapHang">
+                <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+                <ScalarProperty Name="HangDangVe" ColumnName="HangDangVe" />
+                <ScalarProperty Name="TrangThaiNhapHang" ColumnName="TrangThaiNhapHang" />
+                <ScalarProperty Name="NhapKho" ColumnName="NhapKho" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
