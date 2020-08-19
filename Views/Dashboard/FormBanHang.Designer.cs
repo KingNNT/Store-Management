@@ -457,6 +457,7 @@
             this.grvSoldProduct.Name = "grvSoldProduct";
             this.grvSoldProduct.Size = new System.Drawing.Size(567, 152);
             this.grvSoldProduct.TabIndex = 0;
+            this.grvSoldProduct.SelectionChanged += new System.EventHandler(this.grvSoldProduct_SelectionChanged);
             // 
             // groupBox1
             // 
@@ -529,18 +530,21 @@
             this.colIDSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colIDSoldProduct.HeaderText = "Mã Sản Phẩm";
             this.colIDSoldProduct.Name = "colIDSoldProduct";
+            this.colIDSoldProduct.ReadOnly = true;
             // 
             // colNameSoldProduct
             // 
             this.colNameSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colNameSoldProduct.HeaderText = "Tên Sản Phẩm";
             this.colNameSoldProduct.Name = "colNameSoldProduct";
+            this.colNameSoldProduct.ReadOnly = true;
             // 
             // colGiaBanSoldProduct
             // 
             this.colGiaBanSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colGiaBanSoldProduct.HeaderText = "Giá Bán";
             this.colGiaBanSoldProduct.Name = "colGiaBanSoldProduct";
+            this.colGiaBanSoldProduct.ReadOnly = true;
             // 
             // colNumSell
             // 
@@ -553,6 +557,7 @@
             this.colThanhTienSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colThanhTienSoldProduct.HeaderText = "Thành Tiền";
             this.colThanhTienSoldProduct.Name = "colThanhTienSoldProduct";
+            this.colThanhTienSoldProduct.ReadOnly = true;
             // 
             // FormBanHang
             // 

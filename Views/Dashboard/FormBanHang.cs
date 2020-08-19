@@ -251,6 +251,24 @@ namespace StoreManagement.Views
         {
 
         }
+
+        private void grvSoldProduct_SelectionChanged(object sender, EventArgs e)
+        {
+            this.updateColumnThanhTienAtGridViewSoldProduct();
+        }
+
+        private void updateColumnThanhTienAtGridViewSoldProduct()
+        {
+            string soLuongBan = grvSoldProduct.CurrentRow.Cells["colNumSell"].Value.ToString();
+
+            if (soLuongBan != string.Empty)
+            {
+                int intSoLuongBan = Convert.ToInt32(soLuongBan);
+                int giaBan = Convert.ToInt32(grvSoldProduct.CurrentRow.Cells["colGiaBanSoldProduct"].Value.ToString());
+                int thanhTien = intSoLuongBan * giaBan;
+                grvSoldProduct.CurrentRow.Cells["colThanhTienSoldProduct"].Value = thanhTien;
+            }
+        }
     }
 
 
