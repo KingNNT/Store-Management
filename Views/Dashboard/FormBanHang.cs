@@ -82,7 +82,7 @@ namespace StoreManagement.Views
             //grvSanPham.DataSource = dsSanPham.Tables[tableName].DefaultView;
 
             string findIDProduct = txtFindTenSanPham.Text;
-            using (StoreManagement ef = new StoreManagement())
+            using (StoreManagementEntities ef = new StoreManagementEntities())
             {
                 //TODO: Lam Tiep Di
             }
@@ -201,5 +201,15 @@ namespace StoreManagement.Views
             grvSanPham.Columns.Add("ThanhTien", "ThanhTien");
         }
         #endregion
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
