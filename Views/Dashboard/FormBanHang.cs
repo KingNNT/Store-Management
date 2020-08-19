@@ -1,6 +1,7 @@
 ﻿using StoreManagement.Models;
 using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace StoreManagement.Views
@@ -16,11 +17,11 @@ namespace StoreManagement.Views
         private void FormBanHang_Load(object sender, EventArgs e)
         {
             this.setDefault();
-            this.addColWhenBuyProducts();
+            this.showDataFromKho();
         }
         private void btnClearProduct_Click(object sender, EventArgs e)
         {
-            dsSanPham.Reset();
+            //dsSanPham.Reset();
             grvSanPham.DataSource = null;
         }
         private void btnTinhTien_Click(object sender, EventArgs e)
@@ -35,7 +36,6 @@ namespace StoreManagement.Views
         }
         private void btnFindSanPham_Click(object sender, EventArgs e)
         {
-            btnTinhTien.Enabled = true;
             string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYSANPHAM]";
             this.findSanPham(tableName);
         }
@@ -46,55 +46,57 @@ namespace StoreManagement.Views
         }
         private void txtKhachDua_TextChanged(object sender, EventArgs e)
         {
-            if (txtKhachDua.Text == "")
-            {
-                btnThanhToan.Enabled = false;
-            }
-            else
-            {
-                btnThanhToan.Enabled = true;
-            }
+            //if (txtKhachDua.Text == "")
+            //{
+            //    btnThanhToan.Enabled = false;
+            //}
+            //else
+            //{
+            //    btnThanhToan.Enabled = true;
+            //}
         }
         private void txtChietKhau_TextChanged(object sender, EventArgs e)
         {
-            if (txtChietKhau.Text == "")
-            {
-                txtChietKhau.Text = "0";
-            }
-            int chietKhau = Convert.ToInt32(txtChietKhau.Text);
-            int khachPhaiTra = Convert.ToInt32(txtTongTien.Text) - chietKhau;
-            txtKhachPhaiTra.Text = khachPhaiTra.ToString();
+            //if (txtChietKhau.Text == "")
+            //{
+            //    txtChietKhau.Text = "0";
+            //}
+            //int chietKhau = Convert.ToInt32(txtChietKhau.Text);
+            //int khachPhaiTra = Convert.ToInt32(txtTongTien.Text) - chietKhau;
+            //txtKhachPhaiTra.Text = khachPhaiTra.ToString();
         }
         #endregion Event Form
 
         #region
         private void setDefault()
         {
-            btnTinhTien.Enabled = false;
             btnThanhToan.Enabled = false;
+            btnPrint.Enabled = false;
+        }
+        private void showDataFromKho()
+        {
+            using (StoreManagementEntities ef = new StoreManagementEntities())
+            {
+                grvSanPham.DataSource = ef.QuanLyKho.ToList();
+            }
         }
         private void findSanPham(string tableName)
         {
-            //string field = "MaSP";
-            //string value = txtFindTenSanPham.Text;
-            //db.findDataSanPham(dsSanPham, tableName, field, value);
-            ////grvSanPham.DataSource = null;
-            //grvSanPham.DataSource = dsSanPham.Tables[tableName].DefaultView;
-
-            string findIDProduct = txtFindTenSanPham.Text;
+            string findIDProduct = txtFindIDProduct.Text;
+            string findNameProDuct = txtFindNameProduct.Text;
             using (StoreManagementEntities ef = new StoreManagementEntities())
             {
-                //TODO: Lam Tiep Di
+
             }
 
         }
         private void findKhachHang(string tableName)
         {
             string field = "SDTKH";
-            string value = txtFindPhoneNumBerKhachHang.Text;
-            db.findData(dsKhachHang, tableName, field, value);
-            grvKhachHang.DataSource = null;
-            grvKhachHang.DataSource = dsKhachHang.Tables[tableName].DefaultView;
+            //string value = txtFindPhoneNumBerKhachHang.Text;
+            //db.findData(dsKhachHang, tableName, field, value);
+            //grvKhachHang.DataSource = null;
+            //grvKhachHang.DataSource = dsKhachHang.Tables[tableName].DefaultView;
         }
         private void tinhTong()
         {
@@ -126,10 +128,10 @@ namespace StoreManagement.Views
                     sum += temp;
                 }
 
-                txtTongTien.Text = sum.ToString();
-                double chietKhau = 0.1;
-                txtChietKhau.Text = (sum * chietKhau).ToString();
-                txtKhachPhaiTra.Text = (sum - (sum * chietKhau)).ToString();
+                //txtTongTien.Text = sum.ToString();
+                //double chietKhau = 0.1;
+                //txtChietKhau.Text = (sum * chietKhau).ToString();
+                //txtKhachPhaiTra.Text = (sum - (sum * chietKhau)).ToString();
             }
             catch (Exception ex)
             {
@@ -138,11 +140,11 @@ namespace StoreManagement.Views
         }
         private void thanhToan()
         {
-            txtTienTraLai.Text = (Convert.ToDouble(txtKhachDua.Text) - Convert.ToDouble(txtKhachPhaiTra.Text)).ToString();
+            //txtTienTraLai.Text = (Convert.ToDouble(txtKhachDua.Text) - Convert.ToDouble(txtKhachPhaiTra.Text)).ToString();
         }
         private void showMaHD()
         {
-            txtSoHoaDon.Text = this.createMaHD(db.getLastRecord());
+            //txtSoHoaDon.Text = this.createMaHD(db.getLastRecord());
         }
         private string createMaHD(string maHD)
         {
@@ -158,26 +160,26 @@ namespace StoreManagement.Views
             string MaSP = grvSanPham.Rows[0].Cells[3].Value.ToString();
             string TenKH = "";
             string SDTKH = "";
-            if (grvKhachHang.DataSource == null)
-            {
-                //MessageBox.Show("Không có thông tin khách hàng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //return;
-                TenKH = SDTKH = "No Infomation";
-            }
-            else
-            {
-                TenKH = grvKhachHang.Rows[0].Cells[1].Value.ToString();
-                SDTKH = grvKhachHang.Rows[0].Cells[3].Value.ToString();
-            }
+            //if (grvKhachHang.DataSource == null)
+            //{
+            //    //MessageBox.Show("Không có thông tin khách hàng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    //return;
+            //    TenKH = SDTKH = "No Infomation";
+            //}
+            //else
+            //{
+            //    TenKH = grvKhachHang.Rows[0].Cells[1].Value.ToString();
+            //    SDTKH = grvKhachHang.Rows[0].Cells[3].Value.ToString();
+            //}
 
             string TrangThaiDH = "Not Categorized";
-            db.insertDataToTableQuanLyBanHang(txtSoHoaDon.Text, MaSP, TenSP, SDTKH);
-            db.insertDataToTableQuanLyDonHang(txtSoHoaDon.Text, DateTime.Now, TenKH, TrangThaiDH, Convert.ToInt32(txtKhachPhaiTra.Text));
+            //db.insertDataToTableQuanLyBanHang(txtSoHoaDon.Text, MaSP, TenSP, SDTKH);
+            //db.insertDataToTableQuanLyDonHang(txtSoHoaDon.Text, DateTime.Now, TenKH, TrangThaiDH, Convert.ToInt32(txtKhachPhaiTra.Text));
 
             for (int i = 0; i < grvSanPham.Rows.Count; i++)
             {
                 string TenSPTrongGio = grvSanPham.Rows[i].Cells[2].Value.ToString();
-                int SoLuongTonTruoc = db.getSoLuongTonQuanLySanPham(TenSPTrongGio);
+                //int SoLuongTonTruoc = db.getSoLuongTonQuanLySanPham(TenSPTrongGio);
                 int SoLuongMua = 0;
                 if (grvSanPham.Rows[i].Cells[0].Value != null)
                 {
@@ -189,25 +191,15 @@ namespace StoreManagement.Views
                     return;
                 }
 
-                int SoLuongTonSau = SoLuongTonTruoc - SoLuongMua;
-                db.updateDataQuanLySanPham(SoLuongTonSau, TenSPTrongGio);
+                //int SoLuongTonSau = SoLuongTonTruoc - SoLuongMua;
+                //db.updateDataQuanLySanPham(SoLuongTonSau, TenSPTrongGio);
             }
 
             MessageBox.Show("Create Bill Successfully", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        private void addColWhenBuyProducts()
-        {
-            grvSanPham.Columns.Add("SoLuong", "SoLuong");
-            grvSanPham.Columns.Add("ThanhTien", "ThanhTien");
-        }
         #endregion
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
+        private void btnThanhToan_Click_1(object sender, EventArgs e)
         {
 
         }

@@ -117,4 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="quanLyKhoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnPrint.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAcZJREFUWEft
+        l81OwkAUhWfjE/kQxkAXhhdwwQvo0p+9huLPTmPiUoIuJDHxFZRKQFHjQhODUVegaKLtRsY59VYKnRJs
+        OwLak5xNO3PP19uB3LKR18TSEVdpigkuFFGlGDCsYsCw+vuAKKAaMBTk0ACOb5bGNL24oulG3dk0KIMB
+        LGAiPMa0rLGa3r58y1VNfnjT6jA23TZbSoza3Xm5M5ODJZk5yRIeY0ndeM5XLc9i+LcB4bxoFJgI7+us
+        yRbCgwCEcY/whgOw8c55XdidS3jDAfhkchvSnUt48Sv2dSSAqbUSrzxY0oAwLt9bPLVekmbCfQMuFmp8
+        dueKVx6jg8QDz4iaC4U7aSbcN+DB9YcNOSU6iXVRGLVQE7VlmTDWEV5vwEE5Bgzr0Qec26/xRKZoL1Rp
+        ZMyLH0x3Pu4RnhxQzGXfRWR/FVHYqS8mF08+rhOefwcnl4+VAyIjUAcdqwaUZcIdgOIcvOyd+w+s3Zre
+        KNvXf+L01intbgvXZZkYnhN6sUl47ZF/98ILiSKqJANEozwjv/PRJDr56jyx26okywKD56Opl7BJlVCb
+        YoJLBhjlGaSY4EIRVYoBw+r/AKo0xYyqGPsEKlq2nX8B0XcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnThanhToan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAV5JREFUaEPt
+        lrtOwzAUhrMhAeKyMQBi4DEYrNqyY1Bfjq0LdtOyMLPRclnKdWVgQogHKXY5liI3RU2F4hPpfNJRpCTK
+        +f7jyHJGEARBEARB4EQWcoNbOWAmP4Jb7UEP9Ra3auJq6uqbDdQxPMLP7+TVA8iH+pQX8gBewUs0+XJd
+        63O9Bq/h5OTybFdY9UbyTUPyqSD5VJB8Kki+Dmyo90VfFf5cArdWZsHZZtox8v4/vj+HKMSha/AFjSb+
+        fAKPatP85M3pnvv4R9RspRBJ/nkI8B41rL3cjf82ZfzkXLOXuLmrpVYCxW7DDNtxDZ8jAV9/hkAhH/Ah
+        hFFPFTKVIVDJB0RPbC8TAqV8wIfgVj5WyM1CoJYPeElu89dY0u8q7ppmt6kLbI13sWxF4Zl8DIS4jYTL
+        hVc+0O1113k/H7dSPuBDdKwatVI+MFsJq25aKR9gV2wT3W5DEATREFn2A/JjH4NSb7e3AAAAAElFTkSu
+        QmCC
+</value>
+  </data>
 </root>

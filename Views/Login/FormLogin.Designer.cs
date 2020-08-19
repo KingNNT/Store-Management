@@ -35,12 +35,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtPassWord = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pn = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.notifyIconLogin = new System.Windows.Forms.NotifyIcon(this.components);
             this.ctxMenuStripForNotifyIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1.SuspendLayout();
+            this.pn.SuspendLayout();
             this.ctxMenuStripForNotifyIcon.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,26 +92,26 @@
             this.label3.Text = "Store Management";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel1
+            // pn
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel1.Controls.Add(this.txtUserName);
-            this.panel1.Controls.Add(this.btnLogin);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtPassWord);
-            this.panel1.Location = new System.Drawing.Point(12, 57);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(776, 381);
-            this.panel1.TabIndex = 6;
+            this.pn.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pn.Controls.Add(this.txtUserName);
+            this.pn.Controls.Add(this.btnLogin);
+            this.pn.Controls.Add(this.label1);
+            this.pn.Controls.Add(this.label2);
+            this.pn.Controls.Add(this.txtPassWord);
+            this.pn.Location = new System.Drawing.Point(12, 57);
+            this.pn.Name = "pn";
+            this.pn.Size = new System.Drawing.Size(776, 381);
+            this.pn.TabIndex = 6;
             // 
             // btnLogin
             // 
-            this.btnLogin.BackgroundImage = global::StoreManagement.Properties.Resources.icons8_login_64px_1;
+            this.btnLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.Image")));
             this.btnLogin.ImageKey = "(none)";
             this.btnLogin.Location = new System.Drawing.Point(515, 152);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(62, 61);
+            this.btnLogin.Size = new System.Drawing.Size(50, 50);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -145,15 +145,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pn);
             this.Controls.Add(this.label3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login - Store Management";
             this.Load += new System.EventHandler(this.FormLogin_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pn.ResumeLayout(false);
+            this.pn.PerformLayout();
             this.ctxMenuStripForNotifyIcon.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -168,7 +168,7 @@
         private System.Windows.Forms.TextBox txtPassWord;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pn;
         private System.Windows.Forms.NotifyIcon notifyIconLogin;
         private System.Windows.Forms.ContextMenuStrip ctxMenuStripForNotifyIcon;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;

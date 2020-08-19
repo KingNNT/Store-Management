@@ -109,11 +109,23 @@
     <Compile Include="Views\Dashboard\FormBanHang.Designer.cs">
       <DependentUpon>FormBanHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FormControl.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FormControl.Designer.cs">
       <DependentUpon>FormControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormSettings.Designer.cs">
+      <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login\FormLogin.cs">
       <SubType>Form</SubType>
@@ -159,8 +171,14 @@
     <EmbeddedResource Include="Views\Dashboard\FormBanHang.resx">
       <DependentUpon>FormBanHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FormControl.resx">
       <DependentUpon>FormControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormSettings.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -188,6 +206,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\StoreManagement.Models.QuanLyKho.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -205,14 +224,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Logo\icons8_login_64px.png" />
-    <None Include="Assets\Logo\icons8_login_32px.png" />
-    <None Include="Assets\Logo\icons8_login_100px.png" />
-    <None Include="Assets\Images\icons8_login_32px.png" />
-    <None Include="Assets\Images\icons8_login_64px.png" />
-    <None Include="Assets\Images\icons8_login_64px_1.png" />
-    <None Include="Assets\Images\icons8_login_96px.png" />
-    <None Include="Assets\Images\icons8_login_100px.png" />
+    <None Include="Assets\Images\Buttons\btnCheckOut\icons8_check_64px.png" />
+    <None Include="Assets\Images\Buttons\btnPrint\icons8_print_40px.png" />
+    <None Include="Assets\Images\Buttons\btnCheckOut\icons8_checkmark_48px.png" />
+    <None Include="Assets\Images\Buttons\btnLogin\icons8_login_64px_1.png" />
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -225,6 +240,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\Logo\" />
     <Folder Include="Views\Loading\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

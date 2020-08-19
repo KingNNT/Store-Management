@@ -20,7 +20,6 @@ namespace StoreManagement.Views
             this.resetBackgroundColorOfMenu();
             menuItemBanHang.BackColor = Color.Gray;
         }
-
         private void loadFormNhapHang()
         {
             FormNhapHang frmNhapHang = new FormNhapHang() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
@@ -30,7 +29,6 @@ namespace StoreManagement.Views
             this.resetBackgroundColorOfMenu();
             menuItemNhapHang.BackColor = Color.Gray;
         }
-
         private void loadFormQuanLyKhoHang()
         {
             FormQuanLyKhoHang frmQuanLyKhoHang = new FormQuanLyKhoHang() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
@@ -40,7 +38,6 @@ namespace StoreManagement.Views
             this.resetBackgroundColorOfMenu();
             menuItemQuanLyKhoHang.BackColor = Color.Gray;
         }
-
         private void loadFormTimKiemDonhang()
         {
             FormTimKiemDonhang frmTimKiemDonHang = new FormTimKiemDonhang() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
@@ -50,7 +47,6 @@ namespace StoreManagement.Views
             this.resetBackgroundColorOfMenu();
             menuItemTimKiemDonHang.BackColor = Color.Gray;
         }
-
         private void loadFormQuanLyKhachHang()
         {
             FormQuanLyKhachHang frmQuanLyKhachHang = new FormQuanLyKhachHang() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true, FormBorderStyle = FormBorderStyle.None };
@@ -62,35 +58,32 @@ namespace StoreManagement.Views
         }
         #endregion function loadForms
 
+        #region Event of Form
         private void FormMain_Load(object sender, EventArgs e)
         {
             this.loadFormBanHang();
         }
-
         private void menuItemBanHang_Click(object sender, EventArgs e)
         {
             this.loadFormBanHang();
         }
-
         private void menuItemNhapHang_Click(object sender, EventArgs e)
         {
             this.loadFormNhapHang();
         }
-
         private void menuItemQuanLyKhoHang_Click(object sender, EventArgs e)
         {
             this.loadFormQuanLyKhoHang();
         }
-
         private void menuItemTimKiemDonHang_Click(object sender, EventArgs e)
         {
             this.loadFormTimKiemDonhang();
         }
-
         private void menuItemQuanLyKhachHang_Click(object sender, EventArgs e)
         {
             this.loadFormQuanLyKhachHang();
         }
+        #endregion Event of Form
 
         private void resetBackgroundColorOfMenu()
         {
