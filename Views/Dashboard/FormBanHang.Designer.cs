@@ -31,12 +31,21 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBanHang));
             this.pnDepot = new System.Windows.Forms.Panel();
-            this.txtFindNameProduct = new System.Windows.Forms.TextBox();
+            this.cbxCategoriesProduct = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cbxNameProduct = new System.Windows.Forms.ComboBox();
+            this.cbxIDProduct = new System.Windows.Forms.ComboBox();
+            this.quanLyKhoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
-            this.txtFindIDProduct = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.grvSanPham = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnSell = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnPrint = new System.Windows.Forms.Button();
@@ -67,14 +76,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.quanLyKhoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnDepot.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quanLyKhoBindingSource)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grvSanPham)).BeginInit();
             this.pnSell.SuspendLayout();
@@ -82,14 +85,15 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quanLyKhoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pnDepot
             // 
-            this.pnDepot.Controls.Add(this.txtFindNameProduct);
+            this.pnDepot.Controls.Add(this.cbxCategoriesProduct);
+            this.pnDepot.Controls.Add(this.label15);
+            this.pnDepot.Controls.Add(this.cbxNameProduct);
+            this.pnDepot.Controls.Add(this.cbxIDProduct);
             this.pnDepot.Controls.Add(this.label2);
-            this.pnDepot.Controls.Add(this.txtFindIDProduct);
             this.pnDepot.Controls.Add(this.label1);
             this.pnDepot.Controls.Add(this.panel4);
             this.pnDepot.Location = new System.Drawing.Point(13, 13);
@@ -97,28 +101,60 @@
             this.pnDepot.Size = new System.Drawing.Size(761, 425);
             this.pnDepot.TabIndex = 0;
             // 
-            // txtFindNameProduct
+            // cbxCategoriesProduct
             // 
-            this.txtFindNameProduct.Location = new System.Drawing.Point(271, 4);
-            this.txtFindNameProduct.Name = "txtFindNameProduct";
-            this.txtFindNameProduct.Size = new System.Drawing.Size(100, 20);
-            this.txtFindNameProduct.TabIndex = 4;
+            this.cbxCategoriesProduct.FormattingEnabled = true;
+            this.cbxCategoriesProduct.Location = new System.Drawing.Point(535, 4);
+            this.cbxCategoriesProduct.Name = "cbxCategoriesProduct";
+            this.cbxCategoriesProduct.Size = new System.Drawing.Size(121, 21);
+            this.cbxCategoriesProduct.TabIndex = 7;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(420, 6);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(109, 13);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Danh Mục Sản Phẩm";
+            // 
+            // cbxNameProduct
+            // 
+            this.cbxNameProduct.FormattingEnabled = true;
+            this.cbxNameProduct.Location = new System.Drawing.Point(293, 4);
+            this.cbxNameProduct.Name = "cbxNameProduct";
+            this.cbxNameProduct.Size = new System.Drawing.Size(121, 21);
+            this.cbxNameProduct.TabIndex = 5;
+            this.cbxNameProduct.SelectedIndexChanged += new System.EventHandler(this.cbxNameProduct_SelectedIndexChanged);
+            // 
+            // cbxIDProduct
+            // 
+            this.cbxIDProduct.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbxIDProduct.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxIDProduct.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.quanLyKhoBindingSource, "MaSanPham", true));
+            this.cbxIDProduct.DataSource = this.quanLyKhoBindingSource;
+            this.cbxIDProduct.DisplayMember = "MaSanPham";
+            this.cbxIDProduct.FormattingEnabled = true;
+            this.cbxIDProduct.Location = new System.Drawing.Point(82, 3);
+            this.cbxIDProduct.Name = "cbxIDProduct";
+            this.cbxIDProduct.Size = new System.Drawing.Size(121, 21);
+            this.cbxIDProduct.TabIndex = 4;
+            this.cbxIDProduct.ValueMember = "MaSanPham";
+            this.cbxIDProduct.SelectedIndexChanged += new System.EventHandler(this.cbxIDProduct_SelectedIndexChanged);
+            this.cbxIDProduct.TextChanged += new System.EventHandler(this.cbxIDProduct_TextChanged);
+            // 
+            // quanLyKhoBindingSource
+            // 
+            this.quanLyKhoBindingSource.DataSource = typeof(StoreManagement.Models.QuanLyKho);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(191, 7);
+            this.label2.Location = new System.Drawing.Point(209, 6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Tên Sản Phẩm";
-            // 
-            // txtFindIDProduct
-            // 
-            this.txtFindIDProduct.Location = new System.Drawing.Point(85, 4);
-            this.txtFindIDProduct.Name = "txtFindIDProduct";
-            this.txtFindIDProduct.Size = new System.Drawing.Size(100, 20);
-            this.txtFindIDProduct.TabIndex = 2;
             // 
             // label1
             // 
@@ -144,8 +180,8 @@
             this.grvSanPham.AutoGenerateColumns = false;
             this.grvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grvSanPham.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
@@ -157,6 +193,54 @@
             this.grvSanPham.ReadOnly = true;
             this.grvSanPham.Size = new System.Drawing.Size(754, 392);
             this.grvSanPham.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "MaSanPham";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Mã Sản Phẩm";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TenSanPham";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Tên Sản Phẩm";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "DanhMucSanPham";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Danh Mục";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "SoLuongTonKho";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Số Lượng Tồn Kho";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "GiaNhap";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Giá Nhập";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "GiaBan";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Giá Bán";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // pnSell
             // 
@@ -225,7 +309,7 @@
             this.btnThanhToan.Size = new System.Drawing.Size(50, 50);
             this.btnThanhToan.TabIndex = 13;
             this.btnThanhToan.UseVisualStyleBackColor = true;
-            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click_1);
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // textBox12
             // 
@@ -443,58 +527,6 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Tên Khách Hàng";
             // 
-            // quanLyKhoBindingSource
-            // 
-            this.quanLyKhoBindingSource.DataSource = typeof(StoreManagement.Models.QuanLyKho);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "TenSanPham";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Tên Sản Phẩm";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "MaSanPham";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Mã Sản Phẩm";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "DanhMucSanPham";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Danh Mục";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "SoLuongTonKho";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Số Lượng Tồn Kho";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "GiaNhap";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Giá Nhập";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "GiaBan";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Giá Bán";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
             // FormBanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,6 +539,7 @@
             this.Load += new System.EventHandler(this.FormBanHang_Load);
             this.pnDepot.ResumeLayout(false);
             this.pnDepot.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.quanLyKhoBindingSource)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grvSanPham)).EndInit();
             this.pnSell.ResumeLayout(false);
@@ -517,7 +550,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quanLyKhoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -526,10 +558,8 @@
 
         private System.Windows.Forms.Panel pnDepot;
         private System.Windows.Forms.Panel pnSell;
-        private System.Windows.Forms.TextBox txtFindIDProduct;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox txtFindNameProduct;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView grvSanPham;
         private System.Windows.Forms.Label label4;
@@ -568,11 +598,15 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.BindingSource quanLyKhoBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.ComboBox cbxNameProduct;
+        private System.Windows.Forms.ComboBox cbxIDProduct;
+        private System.Windows.Forms.ComboBox cbxCategoriesProduct;
+        private System.Windows.Forms.Label label15;
     }
 }

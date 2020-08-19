@@ -13,17 +13,17 @@ namespace StoreManagement.Views
             InitializeComponent();
         }
 
+        StoreManagementEntities ef = new StoreManagementEntities();
+
         #region Event Form
         private void FormBanHang_Load(object sender, EventArgs e)
         {
             this.setDefault();
             this.showDataFromKho();
+
+            this.bindingDataToCbx();
         }
-        private void btnClearProduct_Click(object sender, EventArgs e)
-        {
-            //dsSanPham.Reset();
-            grvSanPham.DataSource = null;
-        }
+
         private void btnTinhTien_Click(object sender, EventArgs e)
         {
             this.tinhTong();
@@ -34,16 +34,7 @@ namespace StoreManagement.Views
             this.thanhToan();
             this.createBill();
         }
-        private void btnFindSanPham_Click(object sender, EventArgs e)
-        {
-            string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYSANPHAM]";
-            this.findSanPham(tableName);
-        }
-        private void btnFindPhoneNumberKhachHang_Click(object sender, EventArgs e)
-        {
-            string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYKHACHHANG]";
-            this.findKhachHang(tableName);
-        }
+
         private void txtKhachDua_TextChanged(object sender, EventArgs e)
         {
             //if (txtKhachDua.Text == "")
@@ -73,31 +64,15 @@ namespace StoreManagement.Views
             btnThanhToan.Enabled = false;
             btnPrint.Enabled = false;
         }
+        private void bindingDataToCbx()
+        {
+            cbxIDProduct.DataSource = ef.QuanLyKho.ToList();
+        }
         private void showDataFromKho()
         {
-            using (StoreManagementEntities ef = new StoreManagementEntities())
-            {
-                grvSanPham.DataSource = ef.QuanLyKho.ToList();
-            }
+            grvSanPham.DataSource = ef.QuanLyKho.ToList();
         }
-        private void findSanPham(string tableName)
-        {
-            string findIDProduct = txtFindIDProduct.Text;
-            string findNameProDuct = txtFindNameProduct.Text;
-            using (StoreManagementEntities ef = new StoreManagementEntities())
-            {
 
-            }
-
-        }
-        private void findKhachHang(string tableName)
-        {
-            string field = "SDTKH";
-            //string value = txtFindPhoneNumBerKhachHang.Text;
-            //db.findData(dsKhachHang, tableName, field, value);
-            //grvKhachHang.DataSource = null;
-            //grvKhachHang.DataSource = dsKhachHang.Tables[tableName].DefaultView;
-        }
         private void tinhTong()
         {
             try
@@ -199,9 +174,25 @@ namespace StoreManagement.Views
         }
         #endregion
 
-        private void btnThanhToan_Click_1(object sender, EventArgs e)
+
+        #region Event CbxIDProduct
+        private void cbxIDProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grvSanPham.DataSource = ef.QuanLyKho.Where(x => x.MaSanPham == cbxIDProduct.SelectedValue.ToString()).ToList();
+        }
+        private void cbxIDProduct_TextChanged(object sender, EventArgs e)
+        {
+            if (cbxIDProduct.Text == string.Empty)
+            {
+                this.showDataFromKho();
+            }
+        }
+        #endregion Event CbxIDProduct
+
+        private void cbxNameProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
     }
 }
