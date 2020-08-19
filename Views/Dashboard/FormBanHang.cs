@@ -25,14 +25,15 @@ namespace StoreManagement.Views
         }
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
-            this.createBill();
+            this.checkOut();
         }
         #endregion Event Form
 
         #region
         private void setDefault()
         {
-            btnCheckOut.Enabled = true;
+            btnCreateBill.Enabled = false;
+            btnCheckOut.Enabled = false;
             btnPrint.Enabled = false;
 
             this.loadSetting();
@@ -81,16 +82,16 @@ namespace StoreManagement.Views
                 }
                 txtTongTien.Text = sum.ToString();
                 txtTienPhaiTra.Text = (Convert.ToInt32(txtTongTien.Text) - Convert.ToInt32(txtChietKhau.Text)).ToString();
-
-                txtTraLai.Text = (Convert.ToInt32(txtKhachDua.Text) - Convert.ToInt32(txtTienPhaiTra.Text)).ToString();
-
-
-                MessageBox.Show("Create Bill Successfully", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void checkOut()
+        {
+            txtTraLai.Text = (Convert.ToInt32(txtKhachDua.Text) - Convert.ToInt32(txtTienPhaiTra.Text)).ToString();
         }
         #endregion
 
@@ -174,11 +175,6 @@ namespace StoreManagement.Views
 
         }
 
-        private void tinhTien()
-        {
-
-        }
-
         private void grvSoldProduct_SelectionChanged(object sender, EventArgs e)
         {
             this.updateColumnThanhTienAtGridViewSoldProduct();
@@ -194,6 +190,34 @@ namespace StoreManagement.Views
                 int giaBan = Convert.ToInt32(grvSoldProduct.CurrentRow.Cells["colGiaBanSoldProduct"].Value.ToString());
                 int thanhTien = intSoLuongBan * giaBan;
                 grvSoldProduct.CurrentRow.Cells["colThanhTienSoldProduct"].Value = thanhTien;
+            }
+        }
+
+        private void btnCreateBill_Click(object sender, EventArgs e)
+        {
+            this.createBill();
+        }
+
+        private void txtChietKhau_TextChanged(object sender, EventArgs e)
+        {
+            if (txtChietKhau.Text != string.Empty)
+            {
+                btnCreateBill.Enabled = true;
+            }
+            else
+            {
+                btnCreateBill.Enabled = false;
+            }
+        }
+        private void txtKhachDua_TextChanged(object sender, EventArgs e)
+        {
+            if (txtKhachDua.Text != string.Empty)
+            {
+                btnCheckOut.Enabled = true;
+            }
+            else
+            {
+                btnCheckOut.Enabled = false;
             }
         }
     }

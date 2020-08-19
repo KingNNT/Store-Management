@@ -311,6 +311,7 @@
             this.btnCreateBill.Size = new System.Drawing.Size(50, 50);
             this.btnCreateBill.TabIndex = 17;
             this.btnCreateBill.UseVisualStyleBackColor = true;
+            this.btnCreateBill.Click += new System.EventHandler(this.btnCreateBill_Click);
             // 
             // btnPrint
             // 
@@ -369,9 +370,9 @@
             // 
             this.txtKhachDua.Location = new System.Drawing.Point(86, 103);
             this.txtKhachDua.Name = "txtKhachDua";
-            this.txtKhachDua.ReadOnly = true;
             this.txtKhachDua.Size = new System.Drawing.Size(99, 20);
             this.txtKhachDua.TabIndex = 10;
+            this.txtKhachDua.TextChanged += new System.EventHandler(this.txtKhachDua_TextChanged);
             // 
             // label13
             // 
@@ -386,9 +387,9 @@
             // 
             this.txtChietKhau.Location = new System.Drawing.Point(271, 51);
             this.txtChietKhau.Name = "txtChietKhau";
-            this.txtChietKhau.ReadOnly = true;
             this.txtChietKhau.Size = new System.Drawing.Size(109, 20);
             this.txtChietKhau.TabIndex = 8;
+            this.txtChietKhau.TextChanged += new System.EventHandler(this.txtChietKhau_TextChanged);
             // 
             // label11
             // 
@@ -522,7 +523,6 @@
             // 
             this.txtAddressCustom.Location = new System.Drawing.Point(101, 69);
             this.txtAddressCustom.Name = "txtAddressCustom";
-            this.txtAddressCustom.ReadOnly = true;
             this.txtAddressCustom.Size = new System.Drawing.Size(472, 20);
             this.txtAddressCustom.TabIndex = 7;
             // 
@@ -530,7 +530,6 @@
             // 
             this.txtPhoneNumberCustom.Location = new System.Drawing.Point(101, 43);
             this.txtPhoneNumberCustom.Name = "txtPhoneNumberCustom";
-            this.txtPhoneNumberCustom.ReadOnly = true;
             this.txtPhoneNumberCustom.Size = new System.Drawing.Size(472, 20);
             this.txtPhoneNumberCustom.TabIndex = 6;
             // 
@@ -538,7 +537,6 @@
             // 
             this.txtNameCustom.Location = new System.Drawing.Point(101, 17);
             this.txtNameCustom.Name = "txtNameCustom";
-            this.txtNameCustom.ReadOnly = true;
             this.txtNameCustom.Size = new System.Drawing.Size(472, 20);
             this.txtNameCustom.TabIndex = 5;
             // 
