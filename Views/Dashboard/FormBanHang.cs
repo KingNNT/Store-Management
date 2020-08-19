@@ -64,10 +64,7 @@ namespace StoreManagement.Views
             btnThanhToan.Enabled = false;
             btnPrint.Enabled = false;
         }
-        private void bindingDataToCbx()
-        {
-            cbxIDProduct.DataSource = ef.QuanLyKho.ToList();
-        }
+
         private void showDataFromKho()
         {
             grvSanPham.DataSource = ef.QuanLyKho.ToList();
@@ -174,25 +171,64 @@ namespace StoreManagement.Views
         }
         #endregion
 
+        #region Events Cbx
 
-        #region Event CbxIDProduct
+        private bool checkTextOfCbxEmpty()
+        {
+            return (cbxIDProduct.Text == string.Empty && cbxNameProduct.Text == string.Empty && cbxCategoriesProduct.Text == string.Empty);
+        }
+        private void bindingDataToCbx()
+        {
+            cbxIDProduct.DataSource = ef.QuanLyKho.ToList();
+            cbxNameProduct.DataSource = ef.QuanLyKho.ToList();
+            cbxCategoriesProduct.DataSource = ef.QuanLyKho.ToList();
+        }
+        #region Events CbxIDProduct
         private void cbxIDProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             grvSanPham.DataSource = ef.QuanLyKho.Where(x => x.MaSanPham == cbxIDProduct.SelectedValue.ToString()).ToList();
         }
         private void cbxIDProduct_TextChanged(object sender, EventArgs e)
         {
-            if (cbxIDProduct.Text == string.Empty)
+            if (checkTextOfCbxEmpty())
             {
                 this.showDataFromKho();
             }
         }
-        #endregion Event CbxIDProduct
-
+        #endregion Events CbxIDProduct
+        #region Events CbxNameProduct
         private void cbxNameProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            grvSanPham.DataSource = ef.QuanLyKho.Where(x => x.TenSanPham == cbxNameProduct.SelectedValue.ToString()).ToList();
         }
 
+        private void cbxNameProduct_TextChanged(object sender, EventArgs e)
+        {
+            if (checkTextOfCbxEmpty())
+            {
+                this.showDataFromKho();
+            }
+        }
+        #endregion Events CbxNameProduct
+        #region Event CbxCategoriesProduct
+        private void cbxCategoriesProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grvSanPham.DataSource = ef.QuanLyKho.Where(x => x.DanhMucSanPham == cbxCategoriesProduct.SelectedValue.ToString()).ToList();
+        }
+        private void cbxCategoriesProduct_TextChanged(object sender, EventArgs e)
+        {
+            if (checkTextOfCbxEmpty())
+            {
+                this.showDataFromKho();
+            }
+        }
+        #endregion Event CbxCategoriesProduct
+
+        #endregion Events Cbx
+
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
+            this.showDataFromKho();
+        }
     }
 }

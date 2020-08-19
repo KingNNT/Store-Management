@@ -32,10 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBanHang));
             this.pnDepot = new System.Windows.Forms.Panel();
             this.cbxCategoriesProduct = new System.Windows.Forms.ComboBox();
+            this.quanLyKhoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label15 = new System.Windows.Forms.Label();
             this.cbxNameProduct = new System.Windows.Forms.ComboBox();
             this.cbxIDProduct = new System.Windows.Forms.ComboBox();
-            this.quanLyKhoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -76,6 +76,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnShowAll = new System.Windows.Forms.Button();
             this.pnDepot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quanLyKhoBindingSource)).BeginInit();
             this.panel4.SuspendLayout();
@@ -89,6 +90,7 @@
             // 
             // pnDepot
             // 
+            this.pnDepot.Controls.Add(this.btnShowAll);
             this.pnDepot.Controls.Add(this.cbxCategoriesProduct);
             this.pnDepot.Controls.Add(this.label15);
             this.pnDepot.Controls.Add(this.cbxNameProduct);
@@ -103,11 +105,21 @@
             // 
             // cbxCategoriesProduct
             // 
+            this.cbxCategoriesProduct.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.quanLyKhoBindingSource, "DanhMucSanPham", true));
+            this.cbxCategoriesProduct.DataSource = this.quanLyKhoBindingSource;
+            this.cbxCategoriesProduct.DisplayMember = "DanhMucSanPham";
             this.cbxCategoriesProduct.FormattingEnabled = true;
             this.cbxCategoriesProduct.Location = new System.Drawing.Point(535, 4);
             this.cbxCategoriesProduct.Name = "cbxCategoriesProduct";
             this.cbxCategoriesProduct.Size = new System.Drawing.Size(121, 21);
             this.cbxCategoriesProduct.TabIndex = 7;
+            this.cbxCategoriesProduct.ValueMember = "DanhMucSanPham";
+            this.cbxCategoriesProduct.SelectedIndexChanged += new System.EventHandler(this.cbxCategoriesProduct_SelectedIndexChanged);
+            this.cbxCategoriesProduct.TextChanged += new System.EventHandler(this.cbxCategoriesProduct_TextChanged);
+            // 
+            // quanLyKhoBindingSource
+            // 
+            this.quanLyKhoBindingSource.DataSource = typeof(StoreManagement.Models.QuanLyKho);
             // 
             // label15
             // 
@@ -120,12 +132,17 @@
             // 
             // cbxNameProduct
             // 
+            this.cbxNameProduct.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.quanLyKhoBindingSource, "TenSanPham", true));
+            this.cbxNameProduct.DataSource = this.quanLyKhoBindingSource;
+            this.cbxNameProduct.DisplayMember = "TenSanPham";
             this.cbxNameProduct.FormattingEnabled = true;
             this.cbxNameProduct.Location = new System.Drawing.Point(293, 4);
             this.cbxNameProduct.Name = "cbxNameProduct";
             this.cbxNameProduct.Size = new System.Drawing.Size(121, 21);
             this.cbxNameProduct.TabIndex = 5;
+            this.cbxNameProduct.ValueMember = "TenSanPham";
             this.cbxNameProduct.SelectedIndexChanged += new System.EventHandler(this.cbxNameProduct_SelectedIndexChanged);
+            this.cbxNameProduct.TextChanged += new System.EventHandler(this.cbxNameProduct_TextChanged);
             // 
             // cbxIDProduct
             // 
@@ -142,10 +159,6 @@
             this.cbxIDProduct.ValueMember = "MaSanPham";
             this.cbxIDProduct.SelectedIndexChanged += new System.EventHandler(this.cbxIDProduct_SelectedIndexChanged);
             this.cbxIDProduct.TextChanged += new System.EventHandler(this.cbxIDProduct_TextChanged);
-            // 
-            // quanLyKhoBindingSource
-            // 
-            this.quanLyKhoBindingSource.DataSource = typeof(StoreManagement.Models.QuanLyKho);
             // 
             // label2
             // 
@@ -527,6 +540,16 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Tên Khách Hàng";
             // 
+            // btnShowAll
+            // 
+            this.btnShowAll.Location = new System.Drawing.Point(663, 4);
+            this.btnShowAll.Name = "btnShowAll";
+            this.btnShowAll.Size = new System.Drawing.Size(95, 23);
+            this.btnShowAll.TabIndex = 8;
+            this.btnShowAll.Text = "Show All";
+            this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
+            // 
             // FormBanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -608,5 +631,6 @@
         private System.Windows.Forms.ComboBox cbxIDProduct;
         private System.Windows.Forms.ComboBox cbxCategoriesProduct;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnShowAll;
     }
 }
