@@ -247,5 +247,26 @@ namespace StoreManagement.Views
         {
             this.showDataFromKho();
         }
+
+        private void grvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void grvSanPham_DoubleClick(object sender, EventArgs e)
+        {
+            this.fillInfoProductFromKho();
+        }
+        private void fillInfoProductFromKho()
+        {
+            if (grvSanPham.CurrentRow.Index != -1)
+            {
+                txtNameProduct.Text = grvSanPham.CurrentRow.Cells["TenSanPham"].Value.ToString();
+                txtIDProduct.Text = grvSanPham.CurrentRow.Cells["MaSanPham"].Value.ToString();
+
+            }
+        }
     }
+
+
 }
