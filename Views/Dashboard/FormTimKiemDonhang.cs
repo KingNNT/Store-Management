@@ -11,8 +11,5 @@ namespace StoreManagement.Views
         {
             InitializeComponent();
         }
-
-        private string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYDONHANG]";
-        private DataSet ds = new DataSet();
     }
 }

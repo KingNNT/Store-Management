@@ -23,13 +23,7 @@ namespace StoreManagement.Views
 
             this.bindingDataToCbx();
         }
-
-        private void btnTinhTien_Click(object sender, EventArgs e)
-        {
-            this.tinhTong();
-            this.showMaHD();
-        }
-        private void btnThanhToan_Click(object sender, EventArgs e)
+        private void btnCheckOut_Click(object sender, EventArgs e)
         {
             this.createBill();
         }
@@ -38,7 +32,7 @@ namespace StoreManagement.Views
         #region
         private void setDefault()
         {
-            btnThanhToan.Enabled = false;
+            btnCheckOut.Enabled = true;
             btnPrint.Enabled = false;
 
             this.loadSetting();
@@ -64,47 +58,6 @@ namespace StoreManagement.Views
             grvSanPham.DataSource = ef.QuanLyKho.ToList();
         }
 
-        private void tinhTong()
-        {
-            try
-            {
-                string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYSANPHAM]";
-
-                for (int i = 0; i < grvSanPham.Rows.Count; i++)
-                {
-                    int SoLuong = 0;
-                    if (grvSanPham.Rows[i].Cells[0].Value == null)
-                    {
-                        MessageBox.Show("Kiểm tra lại Số Lượng nhập", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        SoLuong = Convert.ToInt32(grvSanPham.Rows[i].Cells[0].Value.ToString());
-                    }
-                    int GiaBan = Convert.ToInt32(grvSanPham.Rows[i].Cells[5].Value.ToString());
-                    grvSanPham.Rows[i].Cells[1].Value = SoLuong * GiaBan;
-                }
-
-                //int sum = Convert.ToInt32(dsSanPham.Tables[tableName].Compute("SUM(GiaBanLe)", string.Empty));
-                int sum = 0;
-                for (int i = 0; i < grvSanPham.Rows.Count; i++)
-                {
-                    int temp = Convert.ToInt32(grvSanPham.Rows[i].Cells[1].Value.ToString());
-                    sum += temp;
-                }
-
-                //txtTongTien.Text = sum.ToString();
-                //double chietKhau = 0.1;
-                //txtChietKhau.Text = (sum * chietKhau).ToString();
-                //txtKhachPhaiTra.Text = (sum - (sum * chietKhau)).ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         private void showMaHD()
         {
             //txtSoHoaDon.Text = this.createMaHD(db.getLastRecord());
@@ -119,46 +72,25 @@ namespace StoreManagement.Views
         }
         private void createBill()
         {
-            string TenSP = grvSanPham.Rows[0].Cells[2].Value.ToString();
-            string MaSP = grvSanPham.Rows[0].Cells[3].Value.ToString();
-            string TenKH = "";
-            string SDTKH = "";
-            //if (grvKhachHang.DataSource == null)
-            //{
-            //    //MessageBox.Show("Không có thông tin khách hàng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    //return;
-            //    TenKH = SDTKH = "No Infomation";
-            //}
-            //else
-            //{
-            //    TenKH = grvKhachHang.Rows[0].Cells[1].Value.ToString();
-            //    SDTKH = grvKhachHang.Rows[0].Cells[3].Value.ToString();
-            //}
-
-            string TrangThaiDH = "Not Categorized";
-            //db.insertDataToTableQuanLyBanHang(txtSoHoaDon.Text, MaSP, TenSP, SDTKH);
-            //db.insertDataToTableQuanLyDonHang(txtSoHoaDon.Text, DateTime.Now, TenKH, TrangThaiDH, Convert.ToInt32(txtKhachPhaiTra.Text));
-
-            for (int i = 0; i < grvSanPham.Rows.Count; i++)
+            try
             {
-                string TenSPTrongGio = grvSanPham.Rows[i].Cells[2].Value.ToString();
-                //int SoLuongTonTruoc = db.getSoLuongTonQuanLySanPham(TenSPTrongGio);
-                int SoLuongMua = 0;
-                if (grvSanPham.Rows[i].Cells[0].Value != null)
+                int sum = 0;
+                foreach (DataGridViewRow row in grvSoldProduct.Rows)
                 {
-                    SoLuongMua = Convert.ToInt32(grvSanPham.Rows[i].Cells[0].Value.ToString());
+                    sum += Convert.ToInt32(row.Cells["colThanhTienSoldProduct"].Value.ToString());
                 }
-                else
-                {
-                    MessageBox.Show("Kiểm tra lại Số Lượng nhập", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                txtTongTien.Text = sum.ToString();
+                txtTienPhaiTra.Text = (Convert.ToInt32(txtTongTien.Text) - Convert.ToInt32(txtChietKhau.Text)).ToString();
 
-                //int SoLuongTonSau = SoLuongTonTruoc - SoLuongMua;
-                //db.updateDataQuanLySanPham(SoLuongTonSau, TenSPTrongGio);
+                txtTraLai.Text = (Convert.ToInt32(txtKhachDua.Text) - Convert.ToInt32(txtTienPhaiTra.Text)).ToString();
+
+
+                MessageBox.Show("Create Bill Successfully", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            MessageBox.Show("Create Bill Successfully", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
 
@@ -220,11 +152,6 @@ namespace StoreManagement.Views
         private void btnShowAll_Click(object sender, EventArgs e)
         {
             this.showDataFromKho();
-        }
-
-        private void grvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void grvSanPham_DoubleClick(object sender, EventArgs e)

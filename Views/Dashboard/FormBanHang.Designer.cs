@@ -49,23 +49,29 @@
             this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnSell = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnCreateBill = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.txtIDBill = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.btnThanhToan = new System.Windows.Forms.Button();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.btnCheckOut = new System.Windows.Forms.Button();
+            this.txtTraLai = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.txtKhachDua = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtChietKhau = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtTienPhaiTra = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtTongTien = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pnSoldProduct = new System.Windows.Forms.Panel();
             this.grvSoldProduct = new System.Windows.Forms.DataGridView();
+            this.colIDSoldProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNameSoldProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGiaBanSoldProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNumSell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colThanhTienSoldProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtAddressCustom = new System.Windows.Forms.TextBox();
             this.txtPhoneNumberCustom = new System.Windows.Forms.TextBox();
@@ -73,11 +79,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.colIDSoldProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNameSoldProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGiaBanSoldProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNumSell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colThanhTienSoldProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnDepot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quanLyKhoBindingSource)).BeginInit();
             this.panel4.SuspendLayout();
@@ -218,7 +219,6 @@
             this.grvSanPham.ReadOnly = true;
             this.grvSanPham.Size = new System.Drawing.Size(754, 403);
             this.grvSanPham.TabIndex = 0;
-            this.grvSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvSanPham_CellContentClick);
             this.grvSanPham.DoubleClick += new System.EventHandler(this.grvSanPham_DoubleClick);
             // 
             // MaSanPham
@@ -281,19 +281,20 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnCreateBill);
             this.groupBox3.Controls.Add(this.btnPrint);
             this.groupBox3.Controls.Add(this.txtIDBill);
             this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.btnThanhToan);
-            this.groupBox3.Controls.Add(this.textBox12);
+            this.groupBox3.Controls.Add(this.btnCheckOut);
+            this.groupBox3.Controls.Add(this.txtTraLai);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.textBox13);
+            this.groupBox3.Controls.Add(this.txtKhachDua);
             this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.textBox11);
+            this.groupBox3.Controls.Add(this.txtChietKhau);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.textBox10);
+            this.groupBox3.Controls.Add(this.txtTienPhaiTra);
             this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.textBox9);
+            this.groupBox3.Controls.Add(this.txtTongTien);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Location = new System.Drawing.Point(4, 300);
             this.groupBox3.Name = "groupBox3";
@@ -302,10 +303,19 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông Tin Thanh Toán";
             // 
+            // btnCreateBill
+            // 
+            this.btnCreateBill.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateBill.Image")));
+            this.btnCreateBill.Location = new System.Drawing.Point(473, 23);
+            this.btnCreateBill.Name = "btnCreateBill";
+            this.btnCreateBill.Size = new System.Drawing.Size(50, 50);
+            this.btnCreateBill.TabIndex = 17;
+            this.btnCreateBill.UseVisualStyleBackColor = true;
+            // 
             // btnPrint
             // 
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
-            this.btnPrint.Location = new System.Drawing.Point(529, 79);
+            this.btnPrint.Location = new System.Drawing.Point(529, 23);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(50, 50);
             this.btnPrint.TabIndex = 16;
@@ -328,23 +338,23 @@
             this.label14.TabIndex = 14;
             this.label14.Text = "Mã Hoá Đơn";
             // 
-            // btnThanhToan
+            // btnCheckOut
             // 
-            this.btnThanhToan.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.Image")));
-            this.btnThanhToan.Location = new System.Drawing.Point(529, 23);
-            this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(50, 50);
-            this.btnThanhToan.TabIndex = 13;
-            this.btnThanhToan.UseVisualStyleBackColor = true;
-            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
+            this.btnCheckOut.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckOut.Image")));
+            this.btnCheckOut.Location = new System.Drawing.Point(529, 79);
+            this.btnCheckOut.Name = "btnCheckOut";
+            this.btnCheckOut.Size = new System.Drawing.Size(50, 50);
+            this.btnCheckOut.TabIndex = 13;
+            this.btnCheckOut.UseVisualStyleBackColor = true;
+            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
-            // textBox12
+            // txtTraLai
             // 
-            this.textBox12.Location = new System.Drawing.Point(271, 103);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(109, 20);
-            this.textBox12.TabIndex = 12;
+            this.txtTraLai.Location = new System.Drawing.Point(271, 103);
+            this.txtTraLai.Name = "txtTraLai";
+            this.txtTraLai.ReadOnly = true;
+            this.txtTraLai.Size = new System.Drawing.Size(109, 20);
+            this.txtTraLai.TabIndex = 12;
             // 
             // label12
             // 
@@ -355,13 +365,13 @@
             this.label12.TabIndex = 11;
             this.label12.Text = "Trả Lại";
             // 
-            // textBox13
+            // txtKhachDua
             // 
-            this.textBox13.Location = new System.Drawing.Point(86, 103);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(99, 20);
-            this.textBox13.TabIndex = 10;
+            this.txtKhachDua.Location = new System.Drawing.Point(86, 103);
+            this.txtKhachDua.Name = "txtKhachDua";
+            this.txtKhachDua.ReadOnly = true;
+            this.txtKhachDua.Size = new System.Drawing.Size(99, 20);
+            this.txtKhachDua.TabIndex = 10;
             // 
             // label13
             // 
@@ -372,13 +382,13 @@
             this.label13.TabIndex = 9;
             this.label13.Text = "Khách Đưa";
             // 
-            // textBox11
+            // txtChietKhau
             // 
-            this.textBox11.Location = new System.Drawing.Point(271, 51);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(109, 20);
-            this.textBox11.TabIndex = 8;
+            this.txtChietKhau.Location = new System.Drawing.Point(271, 51);
+            this.txtChietKhau.Name = "txtChietKhau";
+            this.txtChietKhau.ReadOnly = true;
+            this.txtChietKhau.Size = new System.Drawing.Size(109, 20);
+            this.txtChietKhau.TabIndex = 8;
             // 
             // label11
             // 
@@ -389,13 +399,13 @@
             this.label11.TabIndex = 7;
             this.label11.Text = "Chiết Khấu";
             // 
-            // textBox10
+            // txtTienPhaiTra
             // 
-            this.textBox10.Location = new System.Drawing.Point(86, 77);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(294, 20);
-            this.textBox10.TabIndex = 6;
+            this.txtTienPhaiTra.Location = new System.Drawing.Point(86, 77);
+            this.txtTienPhaiTra.Name = "txtTienPhaiTra";
+            this.txtTienPhaiTra.ReadOnly = true;
+            this.txtTienPhaiTra.Size = new System.Drawing.Size(294, 20);
+            this.txtTienPhaiTra.TabIndex = 6;
             // 
             // label10
             // 
@@ -406,13 +416,13 @@
             this.label10.TabIndex = 5;
             this.label10.Text = "Tiền Phải Trả";
             // 
-            // textBox9
+            // txtTongTien
             // 
-            this.textBox9.Location = new System.Drawing.Point(86, 51);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(99, 20);
-            this.textBox9.TabIndex = 4;
+            this.txtTongTien.Location = new System.Drawing.Point(86, 51);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.ReadOnly = true;
+            this.txtTongTien.Size = new System.Drawing.Size(99, 20);
+            this.txtTongTien.TabIndex = 4;
             // 
             // label9
             // 
@@ -458,6 +468,40 @@
             this.grvSoldProduct.Size = new System.Drawing.Size(567, 152);
             this.grvSoldProduct.TabIndex = 0;
             this.grvSoldProduct.SelectionChanged += new System.EventHandler(this.grvSoldProduct_SelectionChanged);
+            // 
+            // colIDSoldProduct
+            // 
+            this.colIDSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colIDSoldProduct.HeaderText = "Mã Sản Phẩm";
+            this.colIDSoldProduct.Name = "colIDSoldProduct";
+            this.colIDSoldProduct.ReadOnly = true;
+            // 
+            // colNameSoldProduct
+            // 
+            this.colNameSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNameSoldProduct.HeaderText = "Tên Sản Phẩm";
+            this.colNameSoldProduct.Name = "colNameSoldProduct";
+            this.colNameSoldProduct.ReadOnly = true;
+            // 
+            // colGiaBanSoldProduct
+            // 
+            this.colGiaBanSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colGiaBanSoldProduct.HeaderText = "Giá Bán";
+            this.colGiaBanSoldProduct.Name = "colGiaBanSoldProduct";
+            this.colGiaBanSoldProduct.ReadOnly = true;
+            // 
+            // colNumSell
+            // 
+            this.colNumSell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNumSell.HeaderText = "Số Lượng bán";
+            this.colNumSell.Name = "colNumSell";
+            // 
+            // colThanhTienSoldProduct
+            // 
+            this.colThanhTienSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colThanhTienSoldProduct.HeaderText = "Thành Tiền";
+            this.colThanhTienSoldProduct.Name = "colThanhTienSoldProduct";
+            this.colThanhTienSoldProduct.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -525,40 +569,6 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Tên Khách Hàng";
             // 
-            // colIDSoldProduct
-            // 
-            this.colIDSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colIDSoldProduct.HeaderText = "Mã Sản Phẩm";
-            this.colIDSoldProduct.Name = "colIDSoldProduct";
-            this.colIDSoldProduct.ReadOnly = true;
-            // 
-            // colNameSoldProduct
-            // 
-            this.colNameSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNameSoldProduct.HeaderText = "Tên Sản Phẩm";
-            this.colNameSoldProduct.Name = "colNameSoldProduct";
-            this.colNameSoldProduct.ReadOnly = true;
-            // 
-            // colGiaBanSoldProduct
-            // 
-            this.colGiaBanSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colGiaBanSoldProduct.HeaderText = "Giá Bán";
-            this.colGiaBanSoldProduct.Name = "colGiaBanSoldProduct";
-            this.colGiaBanSoldProduct.ReadOnly = true;
-            // 
-            // colNumSell
-            // 
-            this.colNumSell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNumSell.HeaderText = "Số Lượng bán";
-            this.colNumSell.Name = "colNumSell";
-            // 
-            // colThanhTienSoldProduct
-            // 
-            this.colThanhTienSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colThanhTienSoldProduct.HeaderText = "Thành Tiền";
-            this.colThanhTienSoldProduct.Name = "colThanhTienSoldProduct";
-            this.colThanhTienSoldProduct.ReadOnly = true;
-            // 
             // FormBanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -604,16 +614,16 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtTongTien;
+        private System.Windows.Forms.TextBox txtTienPhaiTra;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtChietKhau;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox txtTraLai;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox txtKhachDua;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button btnThanhToan;
+        private System.Windows.Forms.Button btnCheckOut;
         private System.Windows.Forms.TextBox txtIDBill;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnPrint;
@@ -636,5 +646,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colGiaBanSoldProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNumSell;
         private System.Windows.Forms.DataGridViewTextBoxColumn colThanhTienSoldProduct;
+        private System.Windows.Forms.Button btnCreateBill;
     }
 }
