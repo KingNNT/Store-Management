@@ -68,7 +68,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Securities.cs" />
-    <Compile Include="Models\Database.cs" />
     <Compile Include="Models\KhachHang.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

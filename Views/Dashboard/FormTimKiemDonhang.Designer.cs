@@ -65,7 +65,6 @@
             this.btnFind.TabIndex = 14;
             this.btnFind.Text = "Tìm Kiếm";
             this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // txtFind
             // 
@@ -95,7 +94,6 @@
             this.Controls.Add(this.label1);
             this.Name = "FormTimKiemDonhang";
             this.Text = "Tìm Kiếm Đơn Hàng";
-            this.Load += new System.EventHandler(this.FormTimKiemDonhang_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grv)).EndInit();
             this.ResumeLayout(false);

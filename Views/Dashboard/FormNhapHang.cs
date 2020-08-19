@@ -14,19 +14,16 @@ namespace StoreManagement.Views
 
         private string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYSANPHAM]";
         private DataSet ds = new DataSet();
-        private Database db = new Database();
 
         private void showData()
         {
             string field = "Visible";
-            db.getData(ds, tableName, field);
             grv.DataSource = null;
             grv.DataSource = ds.Tables[tableName].DefaultView;
         }
 
         private void updateData()
         {
-            db.updateData(ds, tableName);
             MessageBox.Show("Lưu Thành Công", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.showData();
         }
@@ -101,7 +98,6 @@ namespace StoreManagement.Views
 
         private void deleteDataTableQUANLYSANPHAM()
         {
-            db.deleteDataTableQUANLYSANPHAM();
         }
     }
 }

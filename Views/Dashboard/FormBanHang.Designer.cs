@@ -64,12 +64,8 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numSoLuongBan = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtNameProduct = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtIDProduct = new System.Windows.Forms.TextBox();
+            this.pnSoldProduct = new System.Windows.Forms.Panel();
+            this.grvSoldProduct = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtAddressCustom = new System.Windows.Forms.TextBox();
             this.txtPhoneNumberCustom = new System.Windows.Forms.TextBox();
@@ -77,6 +73,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.colIDSoldProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNameSoldProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGiaBanSoldProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNumSell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colThanhTienSoldProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnDepot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quanLyKhoBindingSource)).BeginInit();
             this.panel4.SuspendLayout();
@@ -84,7 +85,8 @@
             this.pnSell.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numSoLuongBan)).BeginInit();
+            this.pnSoldProduct.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grvSoldProduct)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +102,7 @@
             this.pnDepot.Controls.Add(this.panel4);
             this.pnDepot.Location = new System.Drawing.Point(13, 13);
             this.pnDepot.Name = "pnDepot";
-            this.pnDepot.Size = new System.Drawing.Size(761, 425);
+            this.pnDepot.Size = new System.Drawing.Size(761, 436);
             this.pnDepot.TabIndex = 0;
             // 
             // btnShowAll
@@ -193,7 +195,7 @@
             this.panel4.Controls.Add(this.grvSanPham);
             this.panel4.Location = new System.Drawing.Point(4, 30);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(754, 392);
+            this.panel4.Size = new System.Drawing.Size(754, 403);
             this.panel4.TabIndex = 0;
             // 
             // grvSanPham
@@ -214,7 +216,7 @@
             this.grvSanPham.Location = new System.Drawing.Point(0, 0);
             this.grvSanPham.Name = "grvSanPham";
             this.grvSanPham.ReadOnly = true;
-            this.grvSanPham.Size = new System.Drawing.Size(754, 392);
+            this.grvSanPham.Size = new System.Drawing.Size(754, 403);
             this.grvSanPham.TabIndex = 0;
             this.grvSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvSanPham_CellContentClick);
             this.grvSanPham.DoubleClick += new System.EventHandler(this.grvSanPham_DoubleClick);
@@ -274,7 +276,7 @@
             this.pnSell.Controls.Add(this.groupBox1);
             this.pnSell.Location = new System.Drawing.Point(780, 13);
             this.pnSell.Name = "pnSell";
-            this.pnSell.Size = new System.Drawing.Size(392, 425);
+            this.pnSell.Size = new System.Drawing.Size(592, 436);
             this.pnSell.TabIndex = 1;
             // 
             // groupBox3
@@ -293,9 +295,9 @@
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.textBox9);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Location = new System.Drawing.Point(4, 197);
+            this.groupBox3.Location = new System.Drawing.Point(4, 300);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(385, 225);
+            this.groupBox3.Size = new System.Drawing.Size(585, 133);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông Tin Thanh Toán";
@@ -303,7 +305,7 @@
             // btnPrint
             // 
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
-            this.btnPrint.Location = new System.Drawing.Point(62, 169);
+            this.btnPrint.Location = new System.Drawing.Point(529, 79);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(50, 50);
             this.btnPrint.TabIndex = 16;
@@ -311,7 +313,7 @@
             // 
             // txtIDBill
             // 
-            this.txtIDBill.Location = new System.Drawing.Point(85, 19);
+            this.txtIDBill.Location = new System.Drawing.Point(86, 23);
             this.txtIDBill.Name = "txtIDBill";
             this.txtIDBill.ReadOnly = true;
             this.txtIDBill.Size = new System.Drawing.Size(294, 20);
@@ -320,7 +322,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(5, 22);
+            this.label14.Location = new System.Drawing.Point(6, 26);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(68, 13);
             this.label14.TabIndex = 14;
@@ -329,7 +331,7 @@
             // btnThanhToan
             // 
             this.btnThanhToan.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.Image")));
-            this.btnThanhToan.Location = new System.Drawing.Point(6, 169);
+            this.btnThanhToan.Location = new System.Drawing.Point(529, 23);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(50, 50);
             this.btnThanhToan.TabIndex = 13;
@@ -338,7 +340,7 @@
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(270, 99);
+            this.textBox12.Location = new System.Drawing.Point(271, 103);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
             this.textBox12.Size = new System.Drawing.Size(109, 20);
@@ -347,7 +349,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(190, 102);
+            this.label12.Location = new System.Drawing.Point(191, 106);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(40, 13);
             this.label12.TabIndex = 11;
@@ -355,7 +357,7 @@
             // 
             // textBox13
             // 
-            this.textBox13.Location = new System.Drawing.Point(85, 99);
+            this.textBox13.Location = new System.Drawing.Point(86, 103);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
             this.textBox13.Size = new System.Drawing.Size(99, 20);
@@ -364,7 +366,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(5, 102);
+            this.label13.Location = new System.Drawing.Point(6, 106);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(61, 13);
             this.label13.TabIndex = 9;
@@ -372,7 +374,7 @@
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(270, 47);
+            this.textBox11.Location = new System.Drawing.Point(271, 51);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(109, 20);
@@ -381,7 +383,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(190, 50);
+            this.label11.Location = new System.Drawing.Point(191, 54);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 13);
             this.label11.TabIndex = 7;
@@ -389,7 +391,7 @@
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(85, 73);
+            this.textBox10.Location = new System.Drawing.Point(86, 77);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(294, 20);
@@ -398,7 +400,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 76);
+            this.label10.Location = new System.Drawing.Point(6, 80);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(71, 13);
             this.label10.TabIndex = 5;
@@ -406,7 +408,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(85, 47);
+            this.textBox9.Location = new System.Drawing.Point(86, 51);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(99, 20);
@@ -415,7 +417,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 50);
+            this.label9.Location = new System.Drawing.Point(6, 54);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 13);
             this.label9.TabIndex = 1;
@@ -423,68 +425,38 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.numSoLuongBan);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtNameProduct);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.txtIDProduct);
+            this.groupBox2.Controls.Add(this.pnSoldProduct);
             this.groupBox2.Location = new System.Drawing.Point(3, 7);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(386, 77);
+            this.groupBox2.Size = new System.Drawing.Size(580, 181);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Tin Sản Phẩm";
             // 
-            // numSoLuongBan
+            // pnSoldProduct
             // 
-            this.numSoLuongBan.Location = new System.Drawing.Point(271, 20);
-            this.numSoLuongBan.Name = "numSoLuongBan";
-            this.numSoLuongBan.Size = new System.Drawing.Size(109, 20);
-            this.numSoLuongBan.TabIndex = 7;
+            this.pnSoldProduct.Controls.Add(this.grvSoldProduct);
+            this.pnSoldProduct.Location = new System.Drawing.Point(7, 23);
+            this.pnSoldProduct.Name = "pnSoldProduct";
+            this.pnSoldProduct.Size = new System.Drawing.Size(567, 152);
+            this.pnSoldProduct.TabIndex = 0;
             // 
-            // label5
+            // grvSoldProduct
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(191, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Số Lượng Bán";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 49);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Tên Sản Phẩm";
-            // 
-            // txtNameProduct
-            // 
-            this.txtNameProduct.Location = new System.Drawing.Point(86, 46);
-            this.txtNameProduct.Name = "txtNameProduct";
-            this.txtNameProduct.ReadOnly = true;
-            this.txtNameProduct.Size = new System.Drawing.Size(294, 20);
-            this.txtNameProduct.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Mã Sản Phẩm";
-            // 
-            // txtIDProduct
-            // 
-            this.txtIDProduct.Location = new System.Drawing.Point(86, 20);
-            this.txtIDProduct.Name = "txtIDProduct";
-            this.txtIDProduct.ReadOnly = true;
-            this.txtIDProduct.Size = new System.Drawing.Size(99, 20);
-            this.txtIDProduct.TabIndex = 3;
+            this.grvSoldProduct.AllowUserToAddRows = false;
+            this.grvSoldProduct.AllowUserToDeleteRows = false;
+            this.grvSoldProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvSoldProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colIDSoldProduct,
+            this.colNameSoldProduct,
+            this.colGiaBanSoldProduct,
+            this.colNumSell,
+            this.colThanhTienSoldProduct});
+            this.grvSoldProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grvSoldProduct.Location = new System.Drawing.Point(0, 0);
+            this.grvSoldProduct.Name = "grvSoldProduct";
+            this.grvSoldProduct.Size = new System.Drawing.Size(567, 152);
+            this.grvSoldProduct.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -494,41 +466,41 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(3, 90);
+            this.groupBox1.Location = new System.Drawing.Point(4, 194);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(386, 100);
+            this.groupBox1.Size = new System.Drawing.Size(579, 100);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Khách Hàng";
             // 
             // txtAddressCustom
             // 
-            this.txtAddressCustom.Location = new System.Drawing.Point(101, 65);
+            this.txtAddressCustom.Location = new System.Drawing.Point(101, 69);
             this.txtAddressCustom.Name = "txtAddressCustom";
             this.txtAddressCustom.ReadOnly = true;
-            this.txtAddressCustom.Size = new System.Drawing.Size(279, 20);
+            this.txtAddressCustom.Size = new System.Drawing.Size(472, 20);
             this.txtAddressCustom.TabIndex = 7;
             // 
             // txtPhoneNumberCustom
             // 
-            this.txtPhoneNumberCustom.Location = new System.Drawing.Point(101, 39);
+            this.txtPhoneNumberCustom.Location = new System.Drawing.Point(101, 43);
             this.txtPhoneNumberCustom.Name = "txtPhoneNumberCustom";
             this.txtPhoneNumberCustom.ReadOnly = true;
-            this.txtPhoneNumberCustom.Size = new System.Drawing.Size(279, 20);
+            this.txtPhoneNumberCustom.Size = new System.Drawing.Size(472, 20);
             this.txtPhoneNumberCustom.TabIndex = 6;
             // 
             // txtNameCustom
             // 
-            this.txtNameCustom.Location = new System.Drawing.Point(101, 13);
+            this.txtNameCustom.Location = new System.Drawing.Point(101, 17);
             this.txtNameCustom.Name = "txtNameCustom";
             this.txtNameCustom.ReadOnly = true;
-            this.txtNameCustom.Size = new System.Drawing.Size(279, 20);
+            this.txtNameCustom.Size = new System.Drawing.Size(472, 20);
             this.txtNameCustom.TabIndex = 5;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 68);
+            this.label8.Location = new System.Drawing.Point(6, 72);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 13);
             this.label8.TabIndex = 3;
@@ -537,7 +509,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 42);
+            this.label7.Location = new System.Drawing.Point(6, 46);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(75, 13);
             this.label7.TabIndex = 2;
@@ -546,17 +518,47 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 16);
+            this.label6.Location = new System.Drawing.Point(6, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 13);
             this.label6.TabIndex = 1;
             this.label6.Text = "Tên Khách Hàng";
             // 
+            // colIDSoldProduct
+            // 
+            this.colIDSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colIDSoldProduct.HeaderText = "Mã Sản Phẩm";
+            this.colIDSoldProduct.Name = "colIDSoldProduct";
+            // 
+            // colNameSoldProduct
+            // 
+            this.colNameSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNameSoldProduct.HeaderText = "Tên Sản Phẩm";
+            this.colNameSoldProduct.Name = "colNameSoldProduct";
+            // 
+            // colGiaBanSoldProduct
+            // 
+            this.colGiaBanSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colGiaBanSoldProduct.HeaderText = "Giá Bán";
+            this.colGiaBanSoldProduct.Name = "colGiaBanSoldProduct";
+            // 
+            // colNumSell
+            // 
+            this.colNumSell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNumSell.HeaderText = "Số Lượng bán";
+            this.colNumSell.Name = "colNumSell";
+            // 
+            // colThanhTienSoldProduct
+            // 
+            this.colThanhTienSoldProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colThanhTienSoldProduct.HeaderText = "Thành Tiền";
+            this.colThanhTienSoldProduct.Name = "colThanhTienSoldProduct";
+            // 
             // FormBanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 461);
+            this.ClientSize = new System.Drawing.Size(1384, 461);
             this.Controls.Add(this.pnSell);
             this.Controls.Add(this.pnDepot);
             this.Name = "FormBanHang";
@@ -571,8 +573,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numSoLuongBan)).EndInit();
+            this.pnSoldProduct.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grvSoldProduct)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -587,13 +589,8 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView grvSanPham;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtNameProduct;
-        private System.Windows.Forms.TextBox txtIDProduct;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtAddressCustom;
         private System.Windows.Forms.TextBox txtPhoneNumberCustom;
         private System.Windows.Forms.TextBox txtNameCustom;
@@ -612,13 +609,6 @@
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnThanhToan;
-        private System.Windows.Forms.NumericUpDown numSoLuongBan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenSanPhamDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maSanPhamDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn danhMucSanPhamDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soLuongTonKhoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn giaNhapDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn giaBanDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox txtIDBill;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnPrint;
@@ -634,5 +624,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuongTonKho;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaNhap;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan;
+        private System.Windows.Forms.Panel pnSoldProduct;
+        private System.Windows.Forms.DataGridView grvSoldProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIDSoldProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNameSoldProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colGiaBanSoldProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNumSell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colThanhTienSoldProduct;
     }
 }

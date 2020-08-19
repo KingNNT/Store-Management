@@ -14,18 +14,15 @@ namespace StoreManagement.Views
 
         private string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYKHACHHANG]";
         private DataSet ds = new DataSet();
-        private Database db = new Database();
 
         private void showData()
         {
-            db.getData(ds, tableName);
             grv.DataSource = null;
             grv.DataSource = ds.Tables[tableName].DefaultView;
         }
 
         private void updateData()
         {
-            db.updateData(ds, tableName);
             MessageBox.Show("Lưu Thành Công", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.showData();
         }

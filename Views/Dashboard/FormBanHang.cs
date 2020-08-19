@@ -31,30 +31,7 @@ namespace StoreManagement.Views
         }
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            this.thanhToan();
             this.createBill();
-        }
-
-        private void txtKhachDua_TextChanged(object sender, EventArgs e)
-        {
-            //if (txtKhachDua.Text == "")
-            //{
-            //    btnThanhToan.Enabled = false;
-            //}
-            //else
-            //{
-            //    btnThanhToan.Enabled = true;
-            //}
-        }
-        private void txtChietKhau_TextChanged(object sender, EventArgs e)
-        {
-            //if (txtChietKhau.Text == "")
-            //{
-            //    txtChietKhau.Text = "0";
-            //}
-            //int chietKhau = Convert.ToInt32(txtChietKhau.Text);
-            //int khachPhaiTra = Convert.ToInt32(txtTongTien.Text) - chietKhau;
-            //txtKhachPhaiTra.Text = khachPhaiTra.ToString();
         }
         #endregion Event Form
 
@@ -127,10 +104,7 @@ namespace StoreManagement.Views
                 MessageBox.Show(ex.Message);
             }
         }
-        private void thanhToan()
-        {
-            //txtTienTraLai.Text = (Convert.ToDouble(txtKhachDua.Text) - Convert.ToDouble(txtKhachPhaiTra.Text)).ToString();
-        }
+
         private void showMaHD()
         {
             //txtSoHoaDon.Text = this.createMaHD(db.getLastRecord());
@@ -261,10 +235,21 @@ namespace StoreManagement.Views
         {
             if (grvSanPham.CurrentRow.Index != -1)
             {
-                txtNameProduct.Text = grvSanPham.CurrentRow.Cells["TenSanPham"].Value.ToString();
-                txtIDProduct.Text = grvSanPham.CurrentRow.Cells["MaSanPham"].Value.ToString();
-
+                string IDProduct = grvSanPham.CurrentRow.Cells["MaSanPham"].Value.ToString();
+                string nameProduct = grvSanPham.CurrentRow.Cells["TenSanPham"].Value.ToString();
+                string giaBanSoldProduct = grvSanPham.CurrentRow.Cells["GiaBan"].Value.ToString();
+                grvSoldProduct.Rows.Add(IDProduct, nameProduct, giaBanSoldProduct, string.Empty, string.Empty);
             }
+        }
+
+        private void numSoLuongBan_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tinhTien()
+        {
+
         }
     }
 

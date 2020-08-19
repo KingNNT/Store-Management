@@ -14,18 +14,15 @@ namespace StoreManagement.Views
 
         private string tableName = @"[StoreManagement-LTKK].[dbo].[QUANLYKHOHANG]";
         private DataSet ds = new DataSet();
-        private Database db = new Database();
 
         private void showData()
         {
-            db.getData(ds, tableName);
             grv.DataSource = null;
             grv.DataSource = ds.Tables[tableName].DefaultView;
         }
 
         private void updateData()
         {
-            db.updateData(ds, tableName);
             MessageBox.Show("Lưu Thành Công", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.showData();
         }
@@ -34,7 +31,6 @@ namespace StoreManagement.Views
         {
             string field = "MaSP";
             string value = txtFind.Text;
-            db.findData(ds, tableName, field, value);
             grv.DataSource = null;
             grv.DataSource = ds.Tables[tableName].DefaultView;
         }
@@ -68,27 +64,7 @@ namespace StoreManagement.Views
                 {
                     string maSP = grv.Rows[i].Cells[0].Value.ToString();
                     int nhapKHo = Convert.ToInt32(grv.Rows[i].Cells[3].Value.ToString());
-                    if (nhapKHo != 0)
-                    {
-                        int hangTon = db.getSoLuongTonQuanLySanPhamWithMaSP(maSP);
-                        int hangSauNhap = hangTon + nhapKHo;
-                        if (db.checkMaSPQUANLYSANPHAM(maSP) == true)
-                        {
-                            db.updateDataQuanLySanPhamWithMaSanPham(hangSauNhap, maSP);
-                        }
-                        else
-                        {
-                            Random rand = new Random();
-                            double doubleRand = rand.NextDouble();
-                            string strRand = doubleRand.ToString("f3");
-                            string TenSP = "Name Product-" + strRand;
-                            string DanhMucSP = "Not Categories";
-                            int GiaNhap = Convert.ToInt32(grv.Rows[i].Cells[4].Value.ToString());
-                            int GiaBan = 0;
-                            int Visiable = 1;
-                            db.insertDataTableQUANLYSANPHAM(TenSP, maSP, DanhMucSP, hangSauNhap, GiaNhap, GiaBan, Visiable);
-                        }
-                    }
+
                 }
             }
         }

@@ -45,7 +45,7 @@
             // 
             this.pContainer.Location = new System.Drawing.Point(12, 27);
             this.pContainer.Name = "pContainer";
-            this.pContainer.Size = new System.Drawing.Size(1200, 500);
+            this.pContainer.Size = new System.Drawing.Size(1400, 500);
             this.pContainer.TabIndex = 1;
             // 
             // menuStrip
@@ -60,7 +60,7 @@
             this.toolStripAbout});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1224, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1424, 24);
             this.menuStrip.TabIndex = 2;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -116,7 +116,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(1224, 541);
+            this.ClientSize = new System.Drawing.Size(1424, 541);
             this.Controls.Add(this.pContainer);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
