@@ -63,6 +63,23 @@ namespace StoreManagement.Views
         {
             btnThanhToan.Enabled = false;
             btnPrint.Enabled = false;
+
+            this.loadSetting();
+        }
+
+        private void loadSetting()
+        {
+            int pnDepotFindWithItem = Properties.FormBanHang.Default.pnDepotFindWithItem;
+            if (pnDepotFindWithItem == 1)
+            {
+                cbxIDProduct.Enabled = true;
+                cbxNameProduct.Enabled = false;
+            }
+            else if (pnDepotFindWithItem == 2)
+            {
+                cbxIDProduct.Enabled = false;
+                cbxNameProduct.Enabled = true;
+            }
         }
 
         private void showDataFromKho()
