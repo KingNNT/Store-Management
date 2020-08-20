@@ -22,81 +22,35 @@ namespace StoreManagement.Views
             this.showDataFromKho();
 
             this.bindingDataToCbx();
+            this.createIDBill();
         }
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             this.checkOut();
         }
-        #endregion Event Form
-
-        #region
-        private void setDefault()
+        private void txtChietKhau_TextChanged(object sender, EventArgs e)
         {
-            btnCreateBill.Enabled = false;
-            btnCheckOut.Enabled = false;
-            btnPrint.Enabled = false;
-
-            this.loadSetting();
-        }
-
-        private void loadSetting()
-        {
-            int pnDepotFindWithItem = Properties.FormBanHang.Default.pnDepotFindWithItem;
-            if (pnDepotFindWithItem == 1)
+            if (txtChietKhau.Text != string.Empty)
             {
-                cbxIDProduct.Enabled = true;
-                cbxNameProduct.Enabled = false;
+                btnCreateBill.Enabled = true;
             }
-            else if (pnDepotFindWithItem == 2)
+            else
             {
-                cbxIDProduct.Enabled = false;
-                cbxNameProduct.Enabled = true;
+                btnCreateBill.Enabled = false;
             }
         }
-
-        private void showDataFromKho()
+        private void txtKhachDua_TextChanged(object sender, EventArgs e)
         {
-            grvSanPham.DataSource = ef.QuanLyKho.ToList();
-        }
-
-        private void showMaHD()
-        {
-            //txtSoHoaDon.Text = this.createMaHD(db.getLastRecord());
-        }
-        private string createMaHD(string maHD)
-        {
-            string result = "";
-            string part1 = maHD[0].ToString() + maHD[1].ToString() + maHD[2].ToString();
-            string part2 = maHD[3].ToString() + maHD[4].ToString() + maHD[5].ToString();
-            int value = Convert.ToInt32(part2) + 1;
-            return part1 + value.ToString("D3");
-        }
-        private void createBill()
-        {
-            try
+            if (txtKhachDua.Text != string.Empty)
             {
-                int sum = 0;
-                foreach (DataGridViewRow row in grvSoldProduct.Rows)
-                {
-                    sum += Convert.ToInt32(row.Cells["colThanhTienSoldProduct"].Value.ToString());
-                }
-                txtTongTien.Text = sum.ToString();
-                txtTienPhaiTra.Text = (Convert.ToInt32(txtTongTien.Text) - Convert.ToInt32(txtChietKhau.Text)).ToString();
+                btnCheckOut.Enabled = true;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnCheckOut.Enabled = false;
             }
         }
-
-        private void checkOut()
-        {
-            txtTraLai.Text = (Convert.ToInt32(txtKhachDua.Text) - Convert.ToInt32(txtTienPhaiTra.Text)).ToString();
-        }
-        #endregion
-
         #region Events Cbx
-
         private bool checkTextOfCbxEmpty()
         {
             return (cbxIDProduct.Text == string.Empty && cbxNameProduct.Text == string.Empty && cbxCategoriesProduct.Text == string.Empty);
@@ -149,6 +103,68 @@ namespace StoreManagement.Views
         #endregion Event CbxCategoriesProduct
 
         #endregion Events Cbx
+        #endregion Event Form
+
+        #region
+        private void setDefault()
+        {
+            btnCreateBill.Enabled = false;
+            btnCheckOut.Enabled = false;
+            btnPrint.Enabled = false;
+
+            this.loadSetting();
+        }
+
+        private void loadSetting()
+        {
+            int pnDepotFindWithItem = Properties.FormBanHang.Default.pnDepotFindWithItem;
+            if (pnDepotFindWithItem == 1)
+            {
+                cbxIDProduct.Enabled = true;
+                cbxNameProduct.Enabled = false;
+            }
+            else if (pnDepotFindWithItem == 2)
+            {
+                cbxIDProduct.Enabled = false;
+                cbxNameProduct.Enabled = true;
+            }
+        }
+
+        private void showDataFromKho()
+        {
+            grvSanPham.DataSource = ef.QuanLyKho.ToList();
+        }
+
+        private int createIDBill()
+        {
+            int max = ef.QuanLyBanHang.Max(x => x.MaDonHang);
+            return ++max;
+
+        }
+        private void createBill()
+        {
+            txtIDBill.Text = this.createIDBill().ToString();
+            try
+            {
+                int sum = 0;
+                foreach (DataGridViewRow row in grvSoldProduct.Rows)
+                {
+                    sum += Convert.ToInt32(row.Cells["colThanhTienSoldProduct"].Value.ToString());
+                }
+                txtTongTien.Text = sum.ToString();
+                txtTienPhaiTra.Text = (Convert.ToInt32(txtTongTien.Text) - Convert.ToInt32(txtChietKhau.Text)).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void checkOut()
+        {
+            txtTraLai.Text = (Convert.ToInt32(txtKhachDua.Text) - Convert.ToInt32(txtTienPhaiTra.Text)).ToString();
+        }
+        #endregion
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
@@ -196,29 +212,6 @@ namespace StoreManagement.Views
         private void btnCreateBill_Click(object sender, EventArgs e)
         {
             this.createBill();
-        }
-
-        private void txtChietKhau_TextChanged(object sender, EventArgs e)
-        {
-            if (txtChietKhau.Text != string.Empty)
-            {
-                btnCreateBill.Enabled = true;
-            }
-            else
-            {
-                btnCreateBill.Enabled = false;
-            }
-        }
-        private void txtKhachDua_TextChanged(object sender, EventArgs e)
-        {
-            if (txtKhachDua.Text != string.Empty)
-            {
-                btnCheckOut.Enabled = true;
-            }
-            else
-            {
-                btnCheckOut.Enabled = false;
-            }
         }
     }
 

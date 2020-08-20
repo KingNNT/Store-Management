@@ -14,7 +14,7 @@ namespace StoreManagement.Models
     
     public partial class QuanLyBanHang
     {
-        public string MaDonHang { get; set; }
+        public int MaDonHang { get; set; }
         public string MaSanPham { get; set; }
         public string TenSanPham { get; set; }
         public string SoDienThoaiKhachHang { get; set; }

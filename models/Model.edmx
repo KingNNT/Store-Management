@@ -20,7 +20,7 @@
           <Key>
             <PropertyRef Name="MaDonHang" />
           </Key>
-          <Property Name="MaDonHang" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MaDonHang" Type="int" Nullable="false" />
           <Property Name="NgayTaoDon" Type="date" />
           <Property Name="TenKhachHang" Type="nvarchar" MaxLength="20" />
           <Property Name="TrangThaiDonHang" Type="nvarchar" MaxLength="20" />
@@ -48,7 +48,7 @@
           <Key>
             <PropertyRef Name="MaDonHang" />
           </Key>
-          <Property Name="MaDonHang" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MaDonHang" Type="int" Nullable="false" />
           <Property Name="MaSanPham" Type="nvarchar" MaxLength="20" />
           <Property Name="TenSanPham" Type="nvarchar" MaxLength="20" />
           <Property Name="SoDienThoaiKhachHang" Type="nvarchar" MaxLength="20" />
@@ -111,7 +111,7 @@
           <Key>
             <PropertyRef Name="MaDonHang" />
           </Key>
-          <Property Name="MaDonHang" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MaDonHang" Type="Int32" Nullable="false" />
           <Property Name="NgayTaoDon" Type="DateTime" Precision="0" />
           <Property Name="TenKhachHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiDonHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -139,7 +139,7 @@
           <Key>
             <PropertyRef Name="MaDonHang" />
           </Key>
-          <Property Name="MaDonHang" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MaDonHang" Type="Int32" Nullable="false" />
           <Property Name="MaSanPham" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="TenSanPham" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="SoDienThoaiKhachHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -165,7 +165,7 @@
           <Property Name="NhapKho" Type="Int64" />
           <Property Name="DonGia" Type="Int64" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
