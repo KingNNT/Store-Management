@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="SqlServer" id="Project_145a" database="SqlServer" >
+	<schema name="dbo" catalogname="StoreManagement" >
+		<table name="Account" prior="NguoiDung" row_count="1" >
+			<column name="id" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="Username" prior="TaiKhoan" type="nvarchar" length="20" decimal="0" jt="12" mandatory="y" />
+			<column name="Password" prior="MatKhau" type="nchar" length="100" jt="1" mandatory="y" />
+			<column name="Email" prior="Eemail" type="varchar" length="100" jt="12" />
+			<column name="IDPermission" prior="Permission" type="int" jt="4" mandatory="y" />
+			<column name="Status" type="bit" length="1" jt="-7" mandatory="y" />
+			<index name="Pk_NguoiDung_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="Unq_Account_IDPermission" unique="UNIQUE_KEY" >
+				<column name="IDPermission" />
+			</index>
+		</table>
+		<table name="ChiTietDonBanHang" prior="QuanLyDonHang" row_count="30" >
+			<column name="MaDonHang" type="int" length="20" jt="4" mandatory="y" />
+			<column name="MaSanPham" type="int" length="20" jt="4" mandatory="y" />
+			<column name="SoLuong" type="int" jt="4" mandatory="y" />
+			<column name="ThanhTien" type="money" length="20" jt="3" mandatory="y" />
+			<index name="Pk_ChiTietDonBanHang_MaDonHang" unique="PRIMARY_KEY" >
+				<column name="MaDonHang" />
+			</index>
+			<index name="Unq_ChiTietDonBanHang_MaSanPham" unique="UNIQUE_KEY" >
+				<column name="MaSanPham" />
+			</index>
+		</table>
+		<table name="ChiTietTrangThaiDonHang" >
+			<column name="MaTrangThaiDonHang" prior="MaDonHang" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="TenTrangThai" type="nvarchar(max)" jt="12" mandatory="y" />
+			<index name="Pk_ChiTietTrangThaiDonHang_id" unique="PRIMARY_KEY" >
+				<column name="MaTrangThaiDonHang" />
+			</index>
+			<fk name="Fk_ChiTietTrangThaiDonHang_QuanLyBanHang" to_schema="StoreManagement.dbo" to_table="QuanLyBanHang" >
+				<fk_column name="MaTrangThaiDonHang" pk="MaTrangThaiDonHang" />
+			</fk>
+			<fk name="Fk_ChiTietTrangThaiDonHang_QuanLyNhapHang" to_schema="StoreManagement.dbo" to_table="QuanLyNhapHang" >
+				<fk_column name="MaTrangThaiDonHang" pk="MaTrangThaiDonHang" />
+			</fk>
+		</table>
+		<table name="ChiTietTrangThaiNhapHang" >
+			<column name="MaDonHang" type="int" jt="4" mandatory="y" />
+			<column name="MaSanPham" type="int" jt="4" mandatory="y" />
+			<column name="SoLuongNhap" type="int" jt="4" mandatory="y" />
+			<column name="ThanhTien" type="money" length="20" jt="3" mandatory="y" />
+			<index name="Pk_ChiTietTrangThaiNhapHang_MaDonHang" unique="PRIMARY_KEY" >
+				<column name="MaDonHang" />
+			</index>
+			<index name="Unq_ChiTietTrangThaiNhapHang_MaSanPham" unique="UNIQUE_KEY" >
+				<column name="MaSanPham" />
+			</index>
+		</table>
+		<table name="DanhMucSanPham" >
+			<column name="MaDanhMucSanPham" prior="MaDanhMuc" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="TenDanhMucSanPham" prior="TenDanhMuc" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<index name="Pk_DanhMucSanPham_id" unique="PRIMARY_KEY" >
+				<column name="MaDanhMucSanPham" />
+			</index>
+			<fk name="Fk_DanhMucSanPham_QuanLySanPham" to_schema="StoreManagement.dbo" to_table="QuanLySanPham" >
+				<fk_column name="MaDanhMucSanPham" pk="MaDanhMucSanPham" />
+			</fk>
+		</table>
+		<table name="KhachHang" prior="QuanLyKhachHang" row_count="7" >
+			<column name="MaKhachHang" type="nvarchar" length="20" decimal="0" jt="12" mandatory="y" />
+			<column name="TenKhachHang" type="nvarchar" length="20" jt="12" mandatory="y" />
+			<column name="DiaChi" type="nvarchar" length="20" jt="12" mandatory="y" />
+			<column name="SoDienThoaiKhachHang" type="nvarchar" length="20" jt="12" />
+			<column name="EmailKhachHang" type="nvarchar" length="50" jt="12" />
+			<column name="MaNhomKhachHang" prior="NhomKhachHang" type="int" length="20" jt="4" />
+			<index name="PK_QUANLYKHACHHANG" unique="PRIMARY_KEY" >
+				<column name="MaKhachHang" />
+			</index>
+			<index name="Unq_KhachHang_MaNhomKhachHang" unique="UNIQUE_KEY" >
+				<column name="MaNhomKhachHang" />
+			</index>
+		</table>
+		<table name="MaGiamGia" >
+			<column name="ID" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="MaCode" type="nvarchar" length="20" jt="12" mandatory="y" />
+			<column name="GiamTheoPhanTram" type="int" jt="4" mandatory="y" >
+				<defo><![CDATA[0]]></defo>
+			</column>
+			<column name="GiamTheoSoTien" type="money" length="19" decimal="4" jt="3" mandatory="y" >
+				<defo><![CDATA[0]]></defo>
+			</column>
+			<column name="NgayTao" type="datetime" jt="92" mandatory="y" >
+				<defo><![CDATA[sysdatetime()]]></defo>
+			</column>
+			<column name="NgayHetHan" type="datetime" jt="92" mandatory="y" >
+				<defo><![CDATA[sysdatetime()]]></defo>
+			</column>
+			<index name="Pk_MaGiamGia_ID" unique="PRIMARY_KEY" >
+				<column name="ID" />
+			</index>
+		</table>
+		<table name="NhaCungCap" >
+			<column name="MaNhaCungCap" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="TenNhaCungCap" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="DiaChiNhaCungCap" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="SoDienThoaiNhaCungCap" type="nvarchar" length="20" jt="12" mandatory="y" />
+			<column name="EmailNhaCungCap" type="nvarchar" length="50" jt="12" />
+			<index name="Pk_NhaCungCap_MaNhaCungCap" unique="PRIMARY_KEY" >
+				<column name="MaNhaCungCap" />
+			</index>
+			<fk name="Fk_NhaCungCap_QuanLyNhapHang" to_schema="StoreManagement.dbo" to_table="QuanLyNhapHang" >
+				<fk_column name="MaNhaCungCap" pk="MaNhaCungCap" />
+			</fk>
+		</table>
+		<table name="NhanVien" >
+			<column name="MaNhanVien" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="TenNhanVien" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="NgayThangNamSinh" type="date" jt="91" mandatory="y" />
+			<column name="SoTheCanCuocNhanVien" type="nvarchar" length="15" jt="12" mandatory="y" />
+			<column name="QueQuan" type="nvarchar(max)" jt="12" mandatory="y" />
+			<column name="DiaChiThuongTru" prior="DiaChiNhanVien" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="SoDienThoaiNhanVien" type="nvarchar" length="20" jt="12" mandatory="y" />
+			<column name="EmailNhanVien" type="nvarchar" length="20" jt="12" />
+			<column name="HinhDaiDienNhanVien" prior="AnhNhanVien" type="nvarchar(max)" jt="12" />
+			<index name="Pk_NhanVien_MaNhanVien" unique="PRIMARY_KEY" >
+				<column name="MaNhanVien" />
+			</index>
+			<fk name="Fk_NhanVien_QuanLyKho" to_schema="StoreManagement.dbo" to_table="QuanLyKho" >
+				<fk_column name="MaNhanVien" pk="MaNhanVienQuanLy" />
+			</fk>
+		</table>
+		<table name="NhomKhachHang" >
+			<column name="MaNhomKhachHang" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="TenNhomKhachHang" type="nvarchar" length="50" jt="12" />
+			<index name="Pk_NhomKhachHang_MaNhomKhachHang" unique="PRIMARY_KEY" >
+				<column name="MaNhomKhachHang" />
+			</index>
+			<fk name="Fk_NhomKhachHang_KhachHang" to_schema="StoreManagement.dbo" to_table="KhachHang" >
+				<fk_column name="MaNhomKhachHang" pk="MaNhomKhachHang" />
+			</fk>
+		</table>
+		<table name="Permission" >
+			<comment><![CDATA[Các quy?n truy c?p c?a tài kho?n]]></comment>
+			<column name="id" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="Name" type="varchar" length="100" jt="12" />
+			<index name="Pk_Permission_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="Fk_Permission_Account" to_schema="StoreManagement.dbo" to_table="Account" >
+				<fk_column name="id" pk="IDPermission" />
+			</fk>
+		</table>
+		<table name="QuanLyBanHang" row_count="31" >
+			<column name="MaDonHang" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="NgayTaoDon" type="datetime" jt="92" mandatory="y" >
+				<defo><![CDATA[sysdatetime()]]></defo>
+			</column>
+			<column name="TenKhachHang" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="ThanhTien" type="money" length="20" jt="3" mandatory="y" />
+			<column name="MaTrangThaiDonHang" prior="TrangThaiDonHang" type="int" jt="4" mandatory="y" />
+			<index name="Pk_QuanLyBanHang_MaDonHang" unique="PRIMARY_KEY" >
+				<column name="MaDonHang" />
+			</index>
+			<index name="Unq_QuanLyBanHang_MaTrangThaiDonHang" unique="UNIQUE_KEY" >
+				<column name="MaTrangThaiDonHang" />
+			</index>
+			<fk name="Fk_QuanLyBanHang_ChiTietDonBanHang" to_schema="StoreManagement.dbo" to_table="ChiTietDonBanHang" delete_action="cascade" update_action="cascade" >
+				<fk_column name="MaDonHang" pk="MaDonHang" />
+			</fk>
+		</table>
+		<table name="QuanLyHangTrongKho" prior="QuanLyKho" row_count="6" >
+			<column name="MaSanPham" type="nvarchar" length="20" decimal="0" jt="12" mandatory="y" />
+			<column name="SoLuongTonKho" type="bigint" jt="-5" mandatory="y" />
+			<column name="MaKho" prior="ViTriKho" type="int" jt="4" mandatory="y" />
+			<index name="PK_QUANLYSANPHAM&#039;" unique="PRIMARY_KEY" >
+				<column name="MaSanPham" />
+			</index>
+			<index name="Unq_QuanLyHangTrongKho_MaKho" unique="UNIQUE_KEY" >
+				<column name="MaKho" />
+			</index>
+		</table>
+		<table name="QuanLyKho" >
+			<column name="MaKho" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="TenKho" type="nvarchar" length="50" jt="12" />
+			<column name="DiaChiKho" type="nvarchar" length="100" jt="12" />
+			<column name="DienTichKho" type="int" jt="4" >
+				<comment><![CDATA[Tinh tren don vi m2]]></comment>
+			</column>
+			<column name="SucChuaHienTai" type="int" jt="4" mandatory="y" >
+				<defo><![CDATA[0]]></defo>
+				<comment><![CDATA[Tinh tren don vi %]]></comment>
+			</column>
+			<column name="MaNhanVienQuanLy" type="int" jt="4" mandatory="y" />
+			<index name="Pk_QuanLyKho_MaKho" unique="PRIMARY_KEY" >
+				<column name="MaKho" />
+			</index>
+			<index name="Unq_QuanLyKho_MaNhanVienQuanLy" unique="UNIQUE_KEY" >
+				<column name="MaNhanVienQuanLy" />
+			</index>
+			<fk name="Fk_QuanLyKho_QuanLyHangTrongKho" to_schema="StoreManagement.dbo" to_table="QuanLyHangTrongKho" >
+				<fk_column name="MaKho" pk="MaKho" />
+			</fk>
+		</table>
+		<table name="QuanLyNhapHang" prior="QuanLyKhoHang" row_count="11" >
+			<column name="MaDonHang" prior="MaSanPham" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="NgayTaoDon" type="datetime" jt="92" mandatory="y" >
+				<defo><![CDATA[sysdatetime()]]></defo>
+			</column>
+			<column name="MaNhaCungCap" prior="NhaCungCap" type="int" jt="4" mandatory="y" />
+			<column name="ThanhTien" type="money" length="20" jt="3" mandatory="y" />
+			<column name="MaTrangThaiDonHang" prior="TrangThaiDonHang" type="int" jt="4" />
+			<index name="Pk_QuanLyNhapHang_MaDonHang" unique="PRIMARY_KEY" >
+				<column name="MaDonHang" />
+			</index>
+			<index name="Unq_QuanLyNhapHang_MaNhaCungCap" unique="UNIQUE_KEY" >
+				<column name="MaNhaCungCap" />
+			</index>
+			<index name="Unq_QuanLyNhapHang_MaTrangThaiDonHang" unique="UNIQUE_KEY" >
+				<column name="MaTrangThaiDonHang" />
+			</index>
+			<fk name="Fk_QuanLyNhapHang_ChiTietTrangThaiNhapHang" to_schema="StoreManagement.dbo" to_table="ChiTietTrangThaiNhapHang" delete_action="cascade" update_action="cascade" >
+				<fk_column name="MaDonHang" pk="MaDonHang" />
+			</fk>
+		</table>
+		<table name="QuanLySanPham" >
+			<column name="MaSanPham" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="TenSanPham" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="MaDanhMucSanPham" prior="DanhMucSanPham" type="int" jt="4" mandatory="y" />
+			<column name="GiaNhap" type="money" length="20" jt="3" mandatory="y" />
+			<column name="GiaBan" type="money" length="20" jt="3" mandatory="y" />
+			<column name="TrangThaiSanPham" type="bit" jt="-7" mandatory="y" />
+			<index name="Pk_QuanLySanPham_MaSanPham" unique="PRIMARY_KEY" >
+				<column name="MaSanPham" />
+			</index>
+			<index name="Unq_QuanLySanPham_MaDanhMucSanPham" unique="UNIQUE_KEY" >
+				<column name="MaDanhMucSanPham" />
+			</index>
+			<fk name="Fk_QuanLySanPham_ChiTietDonBanHang" to_schema="StoreManagement.dbo" to_table="ChiTietDonBanHang" >
+				<fk_column name="MaSanPham" pk="MaSanPham" />
+			</fk>
+			<fk name="Fk_QuanLySanPham_ChiTietTrangThaiNhapHang" to_schema="StoreManagement.dbo" to_table="ChiTietTrangThaiNhapHang" >
+				<fk_column name="MaSanPham" pk="MaSanPham" />
+			</fk>
+		</table>
+		<table name="sysdiagrams" row_count="1" >
+			<column name="diagram_id" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="name" type="sysname" length="128" decimal="0" jt="12" mandatory="y" />
+			<column name="principal_id" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="version" type="int" length="10" decimal="0" jt="4" />
+			<column name="definition" type="varbinary(max)" length="0" decimal="0" jt="-3" />
+			<index name="PK__sysdiagr__C2B05B613CB899B1" unique="PRIMARY_KEY" >
+				<column name="diagram_id" />
+			</index>
+			<index name="UK_principal_name" unique="UNIQUE_KEY" >
+				<column name="principal_id" />
+				<column name="name" />
+			</index>
+		</table>
+		<procedure name="sp_alterdiagram" id="Procedure_110d" isSystem="false" params_known="n" >
+			<string><![CDATA[	CREATE PROCEDURE dbo.sp_alterdiagram
+	(
+		@diagramname 	sysname,
+		@owner_id	int	= null,
+		@version 	int,
+		@definition 	varbinary(max)
+	)
+	WITH EXECUTE AS 'dbo'
+	AS
+	BEGIN
+		set nocount on
+	
+		declare @theId 			int
+		declare @retval 		int
+		declare @IsDbo 			int
+		
+		declare @UIDFound 		int
+		declare @DiagId			int
+		declare @ShouldChangeUID	int
+	
+		if(@diagramname is null)
+		begin
+			RAISERROR ('Invalid ARG', 16, 1)
+			return -1
+		end
+	
+		execute as caller;
+		select @theId = DATABASE_PRINCIPAL_ID();	 
+		select @IsDbo = IS_MEMBER(N'db_owner'); 
+		if(@owner_id is null)
+			select @owner_id = @theId;
+		revert;
+	
+		select @ShouldChangeUID = 0
+		select @DiagId = diagram_id, @UIDFound = principal_id from dbo.sysdiagrams where principal_id = @owner_id and name = @diagramname 
+		
+		if(@DiagId IS NULL or (@IsDbo = 0 and @theId <> @UIDFound))
+		begin
+			RAISERROR ('Diagram does not exist or you do not have permission.', 16, 1);
+			return -3
+		end
+	
+		if(@IsDbo <> 0)
+		begin
+			if(@UIDFound is null or USER_NAME(@UIDFound) is null) -- invalid principal_id
+			begin
+				select @ShouldChangeUID = 1 ;
+			end
+		end
+		-- update dds data			
+		update dbo.sysdiagrams set definition = @definition where diagram_id = @DiagId ;
+		-- change owner
+		if(@ShouldChangeUID = 1)
+			update dbo.sysdiagrams set principal_id = @theId where diagram_id = @DiagId ;
+		-- update dds version
+		if(@version is not null)
+			update dbo.sysdiagrams set version = @version where diagram_id = @DiagId ;
+		return 0
+	END
+	]]></string>
+		</procedure>
+		<procedure name="sp_creatediagram" id="Procedure_b5b" isSystem="false" params_known="n" >
+			<string><![CDATA[	CREATE PROCEDURE dbo.sp_creatediagram
+	(
+		@diagramname 	sysname,
+		@owner_id		int	= null, 	
+		@version 		int,
+		@definition 	varbinary(max)
+	)
+	WITH EXECUTE AS 'dbo'
+	AS
+	BEGIN
+		set nocount on
+	
+		declare @theId int
+		declare @retval int
+		declare @IsDbo	int
+		declare @userName sysname
+		if(@version is null or @diagramname is null)
+		begin
+			RAISERROR (N'E_INVALIDARG', 16, 1);
+			return -1
+		end
+	
+		execute as caller;
+		select @theId = DATABASE_PRINCIPAL_ID(); 
+		select @IsDbo = IS_MEMBER(N'db_owner');
+		revert; 
+		
+		if @owner_id is null
+		begin
+			select @owner_id = @theId;
+		end
+		else
+		begin
+			if @theId <> @owner_id
+			begin
+				if @IsDbo = 0
+				begin
+					RAISERROR (N'E_INVALIDARG', 16, 1);
+					return -1
+				end
+				select @theId = @owner_id
+			end
+		end
+		-- next 2 line only for test, will be removed after define name unique
+		if EXISTS(select diagram_id from dbo.sysdiagrams where principal_id = @theId and name = @diagramname)
+		begin
+			RAISERROR ('The name is already used.', 16, 1);
+			return -2
+		end
+	
+		insert into dbo.sysdiagrams(name, principal_id , version, definition)
+				VALUES(@diagramname, @theId, @version, @definition) ;
+		
+		select @retval = @@IDENTITY 
+		return @retval
+	END
+	]]></string>
+		</procedure>
+		<procedure name="sp_dropdiagram" id="Procedure_d1a" isSystem="false" params_known="n" >
+			<string><![CDATA[	CREATE PROCEDURE dbo.sp_dropdiagram
+	(
+		@diagramname 	sysname,
+		@owner_id	int	= null
+	)
+	WITH EXECUTE AS 'dbo'
+	AS
+	BEGIN
+		set nocount on
+		declare @theId 			int
+		declare @IsDbo 			int
+		
+		declare @UIDFound 		int
+		declare @DiagId			int
+	
+		if(@diagramname is null)
+		begin
+			RAISERROR ('Invalid value', 16, 1);
+			return -1
+		end
+	
+		EXECUTE AS CALLER;
+		select @theId = DATABASE_PRINCIPAL_ID();
+		select @IsDbo = IS_MEMBER(N'db_owner'); 
+		if(@owner_id is null)
+			select @owner_id = @theId;
+		REVERT; 
+		
+		select @DiagId = diagram_id, @UIDFound = principal_id from dbo.sysdiagrams where principal_id = @owner_id and name = @diagramname 
+		if(@DiagId IS NULL or (@IsDbo = 0 and @UIDFound <> @theId))
+		begin
+			RAISERROR ('Diagram does not exist or you do not have permission.', 16, 1)
+			return -3
+		end
+	
+		delete from dbo.sysdiagrams where diagram_id = @DiagId;
+	
+		return 0;
+	END
+	]]></string>
+		</procedure>
+		<procedure name="sp_helpdiagramdefinition" id="Procedure_ec8" isSystem="false" params_known="n" >
+			<string><![CDATA[	CREATE PROCEDURE dbo.sp_helpdiagramdefinition
+	(
+		@diagramname 	sysname,
+		@owner_id	int	= null 		
+	)
+	WITH EXECUTE AS N'dbo'
+	AS
+	BEGIN
+		set nocount on
+		declare @theId 		int
+		declare @IsDbo 		int
+		declare @DiagId		int
+		declare @UIDFound	int
+	
+		if(@diagramname is null)
+		begin
+			RAISERROR (N'E_INVALIDARG', 16, 1);
+			return -1
+		end
+	
+		execute as caller;
+		select @theId = DATABASE_PRINCIPAL_ID();
+		select @IsDbo = IS_MEMBER(N'db_owner');
+		if(@owner_id is null)
+			select @owner_id = @theId;
+		revert; 
+	
+		select @DiagId = diagram_id, @UIDFound = principal_id from dbo.sysdiagrams where principal_id = @owner_id and name = @diagramname;
+		if(@DiagId IS NULL or (@IsDbo = 0 and @UIDFound <> @theId ))
+		begin
+			RAISERROR ('Diagram does not exist or you do not have permission.', 16, 1);
+			return -3
+		end
+		select version, definition FROM dbo.sysdiagrams where diagram_id = @DiagId ; 
+		return 0
+	END
+	]]></string>
+		</procedure>
+		<procedure name="sp_helpdiagrams" id="Procedure_2fb" isSystem="false" params_known="n" >
+			<string><![CDATA[	CREATE PROCEDURE dbo.sp_helpdiagrams
+	(
+		@diagramname sysname = NULL,
+		@owner_id int = NULL
+	)
+	WITH EXECUTE AS N'dbo'
+	AS
+	BEGIN
+		DECLARE @user sysname
+		DECLARE @dboLogin bit
+		EXECUTE AS CALLER;
+			SET @user = USER_NAME();
+			SET @dboLogin = CONVERT(bit,IS_MEMBER('db_owner'));
+		REVERT;
+		SELECT
+			[Database] = DB_NAME(),
+			[Name] = name,
+			[ID] = diagram_id,
+			[Owner] = USER_NAME(principal_id),
+			[OwnerID] = principal_id
+		FROM
+			sysdiagrams
+		WHERE
+			(@dboLogin = 1 OR USER_NAME(principal_id) = @user) AND
+			(@diagramname IS NULL OR name = @diagramname) AND
+			(@owner_id IS NULL OR principal_id = @owner_id)
+		ORDER BY
+			4, 5, 1
+	END
+	]]></string>
+		</procedure>
+		<procedure name="sp_renamediagram" id="Procedure_2272" isSystem="false" params_known="n" >
+			<string><![CDATA[	CREATE PROCEDURE dbo.sp_renamediagram
+	(
+		@diagramname 		sysname,
+		@owner_id		int	= null,
+		@new_diagramname	sysname
+	
+	)
+	WITH EXECUTE AS 'dbo'
+	AS
+	BEGIN
+		set nocount on
+		declare @theId 			int
+		declare @IsDbo 			int
+		
+		declare @UIDFound 		int
+		declare @DiagId			int
+		declare @DiagIdTarg		int
+		declare @u_name			sysname
+		if((@diagramname is null) or (@new_diagramname is null))
+		begin
+			RAISERROR ('Invalid value', 16, 1);
+			return -1
+		end
+	
+		EXECUTE AS CALLER;
+		select @theId = DATABASE_PRINCIPAL_ID();
+		select @IsDbo = IS_MEMBER(N'db_owner'); 
+		if(@owner_id is null)
+			select @owner_id = @theId;
+		REVERT;
+	
+		select @u_name = USER_NAME(@owner_id)
+	
+		select @DiagId = diagram_id, @UIDFound = principal_id from dbo.sysdiagrams where principal_id = @owner_id and name = @diagramname 
+		if(@DiagId IS NULL or (@IsDbo = 0 and @UIDFound <> @theId))
+		begin
+			RAISERROR ('Diagram does not exist or you do not have permission.', 16, 1)
+			return -3
+		end
+	
+		-- if((@u_name is not null) and (@new_diagramname = @diagramname))	-- nothing will change
+		--	return 0;
+	
+		if(@u_name is null)
+			select @DiagIdTarg = diagram_id from dbo.sysdiagrams where principal_id = @theId and name = @new_diagramname
+		else
+			select @DiagIdTarg = diagram_id from dbo.sysdiagrams where principal_id = @owner_id and name = @new_diagramname
+	
+		if((@DiagIdTarg is not null) and  @DiagId <> @DiagIdTarg)
+		begin
+			RAISERROR ('The name is already used.', 16, 1);
+			return -2
+		end		
+	
+		if(@u_name is null)
+			update dbo.sysdiagrams set [name] = @new_diagramname, principal_id = @theId where diagram_id = @DiagId
+		else
+			update dbo.sysdiagrams set [name] = @new_diagramname where diagram_id = @DiagId
+		return 0
+	END
+	]]></string>
+		</procedure>
+		<procedure name="sp_upgraddiagrams" id="Procedure_a2d" isSystem="false" params_known="n" >
+			<string><![CDATA[	CREATE PROCEDURE dbo.sp_upgraddiagrams
+	AS
+	BEGIN
+		IF OBJECT_ID(N'dbo.sysdiagrams') IS NOT NULL
+			return 0;
+	
+		CREATE TABLE dbo.sysdiagrams
+		(
+			name sysname NOT NULL,
+			principal_id int NOT NULL,	-- we may change it to varbinary(85)
+			diagram_id int PRIMARY KEY IDENTITY,
+			version int,
+	
+			definition varbinary(max)
+			CONSTRAINT UK_principal_name UNIQUE
+			(
+				principal_id,
+				name
+			)
+		);
+
+		/* Add this if we need to have some form of extended properties for diagrams */
+		/*
+		IF OBJECT_ID(N'dbo.sysdiagram_properties') IS NULL
+		BEGIN
+			CREATE TABLE dbo.sysdiagram_properties
+			(
+				diagram_id int,
+				name sysname,
+				value varbinary(max) NOT NULL
+			)
+		END
+		*/
+		IF OBJECT_ID(N'dbo.dtproperties') IS NOT NULL
+		begin
+			insert into dbo.sysdiagrams
+			(
+				[name],
+				[principal_id],
+				[version],
+				[definition]
+			)
+			select	 
+				convert(sysname, dgnm.[uvalue]),
+				DATABASE_PRINCIPAL_ID(N'dbo'),			-- will change to the sid of sa
+				0,							-- zero for old format, dgdef.[version],
+				dgdef.[lvalue]
+			from dbo.[dtproperties] dgnm
+				inner join dbo.[dtproperties] dggd on dggd.[property] = 'DtgSchemaGUID' and dggd.[objectid] = dgnm.[objectid]	
+				inner join dbo.[dtproperties] dgdef on dgdef.[property] = 'DtgSchemaDATA' and dgdef.[objectid] = dgnm.[objectid]
+				
+			where dgnm.[property] = 'DtgSchemaNAME' and dggd.[uvalue] like N'_EA3E6268-D998-11CE-9454-00AA00A3F36E_' 
+			return 2;
+		end
+		return 1;
+	END
+	]]></string>
+		</procedure>
+		<function name="fn_diagramobjects" id="Function_207b" isSystem="false" params_known="n" >
+			<string><![CDATA[	CREATE FUNCTION dbo.fn_diagramobjects() 
+	RETURNS int
+	WITH EXECUTE AS N'dbo'
+	AS
+	BEGIN
+		declare @id_upgraddiagrams		int
+		declare @id_sysdiagrams			int
+		declare @id_helpdiagrams		int
+		declare @id_helpdiagramdefinition	int
+		declare @id_creatediagram	int
+		declare @id_renamediagram	int
+		declare @id_alterdiagram 	int 
+		declare @id_dropdiagram		int
+		declare @InstalledObjects	int
+		select @InstalledObjects = 0
+		select 	@id_upgraddiagrams = object_id(N'dbo.sp_upgraddiagrams'),
+			@id_sysdiagrams = object_id(N'dbo.sysdiagrams'),
+			@id_helpdiagrams = object_id(N'dbo.sp_helpdiagrams'),
+			@id_helpdiagramdefinition = object_id(N'dbo.sp_helpdiagramdefinition'),
+			@id_creatediagram = object_id(N'dbo.sp_creatediagram'),
+			@id_renamediagram = object_id(N'dbo.sp_renamediagram'),
+			@id_alterdiagram = object_id(N'dbo.sp_alterdiagram'), 
+			@id_dropdiagram = object_id(N'dbo.sp_dropdiagram')
+		if @id_upgraddiagrams is not null
+			select @InstalledObjects = @InstalledObjects + 1
+		if @id_sysdiagrams is not null
+			select @InstalledObjects = @InstalledObjects + 2
+		if @id_helpdiagrams is not null
+			select @InstalledObjects = @InstalledObjects + 4
+		if @id_helpdiagramdefinition is not null
+			select @InstalledObjects = @InstalledObjects + 8
+		if @id_creatediagram is not null
+			select @InstalledObjects = @InstalledObjects + 16
+		if @id_renamediagram is not null
+			select @InstalledObjects = @InstalledObjects + 32
+		if @id_alterdiagram  is not null
+			select @InstalledObjects = @InstalledObjects + 64
+		if @id_dropdiagram is not null
+			select @InstalledObjects = @InstalledObjects + 128
+		
+		return @InstalledObjects 
+	END
+	]]></string>
+		</function>
+	</schema>
+	<connector name="SqlServer" database="SqlServer" driver_class="net.sourceforge.jtds.jdbc.Driver" driver_jar="jtds-1.3.1.jar" driver_desc="SQL Server Authentication - JTDS Driver" host="localhost" port="1433" instance="StoreManagement" user="sa" passwd="MTIzNDU2" />
+	<layout name="Default Layout" id="Layout_ef5" show_relation="columns" >
+		<comment><![CDATA[SqlServer]]></comment>
+		<entity schema="StoreManagement.dbo" name="Account" color="BED3F4" x="1216" y="96" />
+		<entity schema="StoreManagement.dbo" name="ChiTietDonBanHang" color="C7F4BE" x="80" y="80" />
+		<entity schema="StoreManagement.dbo" name="ChiTietTrangThaiDonHang" color="C1D8EE" x="192" y="464" />
+		<entity schema="StoreManagement.dbo" name="ChiTietTrangThaiNhapHang" color="C1D8EE" x="304" y="640" />
+		<entity schema="StoreManagement.dbo" name="DanhMucSanPham" color="C1D8EE" x="912" y="112" />
+		<entity schema="StoreManagement.dbo" name="KhachHang" color="C7F4BE" x="352" y="256" />
+		<entity schema="StoreManagement.dbo" name="MaGiamGia" color="C1D8EE" x="1344" y="288" />
+		<entity schema="StoreManagement.dbo" name="NhaCungCap" color="C1D8EE" x="352" y="784" />
+		<entity schema="StoreManagement.dbo" name="NhanVien" color="C1D8EE" x="992" y="544" />
+		<entity schema="StoreManagement.dbo" name="NhomKhachHang" color="C1D8EE" x="80" y="272" />
+		<entity schema="StoreManagement.dbo" name="Permission" color="C1D8EE" x="1376" y="96" />
+		<entity schema="StoreManagement.dbo" name="QuanLyBanHang" color="BED3F4" x="304" y="80" />
+		<entity schema="StoreManagement.dbo" name="QuanLyHangTrongKho" color="BED3F4" x="1008" y="320" />
+		<entity schema="StoreManagement.dbo" name="QuanLyKho" color="C1D8EE" x="672" y="320" />
+		<entity schema="StoreManagement.dbo" name="QuanLyNhapHang" color="C7F4BE" x="48" y="672" />
+		<entity schema="StoreManagement.dbo" name="QuanLySanPham" color="C1D8EE" x="608" y="112" />
+		<group name="Account and Permission" color="C4E0F9" >
+			<entity schema="StoreManagement.dbo" name="Account" />
+			<entity schema="StoreManagement.dbo" name="Permission" />
+		</group>
+		<group name="BanHang" color="C4E0F9" >
+			<entity schema="StoreManagement.dbo" name="QuanLyBanHang" />
+			<entity schema="StoreManagement.dbo" name="ChiTietDonBanHang" />
+			<entity schema="StoreManagement.dbo" name="KhachHang" />
+			<entity schema="StoreManagement.dbo" name="NhomKhachHang" />
+		</group>
+		<group name="NhapHang" color="C4E0F9" >
+			<entity schema="StoreManagement.dbo" name="QuanLyNhapHang" />
+			<entity schema="StoreManagement.dbo" name="ChiTietTrangThaiNhapHang" />
+			<entity schema="StoreManagement.dbo" name="NhaCungCap" />
+		</group>
+		<group name="SanPham" color="C4E0F9" >
+			<entity schema="StoreManagement.dbo" name="QuanLySanPham" />
+			<entity schema="StoreManagement.dbo" name="DanhMucSanPham" />
+		</group>
+		<group name="NhanVien" color="C4E0F9" >
+			<entity schema="StoreManagement.dbo" name="NhanVien" />
+		</group>
+	</layout>
+</project>
