@@ -14,11 +14,11 @@ namespace StoreManagement.Models
     
     public partial class QuanLyKho
     {
-        public string TenSanPham { get; set; }
-        public string MaSanPham { get; set; }
-        public string DanhMucSanPham { get; set; }
-        public Nullable<long> SoLuongTonKho { get; set; }
-        public Nullable<long> GiaNhap { get; set; }
-        public Nullable<long> GiaBan { get; set; }
+        public int MaKho { get; set; }
+        public string TenKho { get; set; }
+        public string DiaChiKho { get; set; }
+        public Nullable<int> DienTichKho { get; set; }
+        public int MaNhanVienQuanLy { get; set; }
+        public int SucChuaHienTai { get; set; }
     }
 }

@@ -14,10 +14,12 @@ namespace StoreManagement.Models
     
     public partial class QuanLyNhapHang
     {
-        public string MaSanPham { get; set; }
-        public Nullable<long> HangDangVe { get; set; }
-        public string TrangThaiNhapHang { get; set; }
-        public Nullable<long> NhapKho { get; set; }
-        public Nullable<long> DonGia { get; set; }
+        public int MaDonHang { get; set; }
+        public System.DateTime NgayTaoDon { get; set; }
+        public int MaNhaCungCap { get; set; }
+        public decimal ThanhTien { get; set; }
+        public Nullable<int> MaTrangThaiDonHang { get; set; }
+    
+        public virtual ChiTietTrangThaiNhapHang ChiTietTrangThaiNhapHang { get; set; }
     }
 }

@@ -12,13 +12,12 @@ namespace StoreManagement.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class KhachHang
+    public partial class sysdiagrams
     {
-        public string MaKhachHang { get; set; }
-        public string TenKhachHang { get; set; }
-        public Nullable<int> MaNhomKhachHang { get; set; }
-        public string SoDienThoaiKhachHang { get; set; }
-        public string DiaChi { get; set; }
-        public string EmailKhachHang { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

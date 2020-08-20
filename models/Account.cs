@@ -18,7 +18,7 @@ namespace StoreManagement.Models
         public string Password { get; set; }
         public int id { get; set; }
         public string Email { get; set; }
-        public int Permission { get; set; }
+        public int IDPermission { get; set; }
         public bool Status { get; set; }
     }
 }

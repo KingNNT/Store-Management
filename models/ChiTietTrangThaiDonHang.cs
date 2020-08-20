@@ -12,13 +12,9 @@ namespace StoreManagement.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class KhachHang
+    public partial class ChiTietTrangThaiDonHang
     {
-        public string MaKhachHang { get; set; }
-        public string TenKhachHang { get; set; }
-        public Nullable<int> MaNhomKhachHang { get; set; }
-        public string SoDienThoaiKhachHang { get; set; }
-        public string DiaChi { get; set; }
-        public string EmailKhachHang { get; set; }
+        public int MaTrangThaiDonHang { get; set; }
+        public string TenTrangThai { get; set; }
     }
 }
